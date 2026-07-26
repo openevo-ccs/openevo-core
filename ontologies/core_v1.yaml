@@ -1,0 +1,408 @@
+# ============================================================================
+# OpenEvo — Shared Upper Ontology
+# ============================================================================
+# Path:      /ontologies/core_v1.yaml
+# Authoring format: YAML (compiles to JSON-LD/RDF via a future /build/
+#                    pipeline; do not hand-edit generated registry outputs)
+#
+# Namespace: All oe: prefixed IRIs resolve under the permanent identifier
+# namespace https://www.w3id.org/openevo/ (via the w3id.org redirection
+# service). oe:ClassName expands to https://www.w3id.org/openevo/ontology#ClassName.
+#
+# Relocation note (RFC-0001 of this repo, 2026-07-26): this file moved here
+# from conceptbase/ontologies/core_v1.yaml unchanged in content — no class,
+# property, or version number changed as part of the move. It previously
+# lived inside conceptbase because conceptbase was, for a time, the only
+# mature repo in the ecosystem; conceptbase's own README called this
+# repo-hierarchy conflation out plainly ("OECB is the hub of a federated
+# ecosystem"). It isn't one anymore: nine Foundational Repos share this
+# ontology co-equally (ConceptBase owning Concept/LPM/Strand/LearningObject/
+# Competency instances; CompetencyBase, TeachingBase, ProjectBase,
+# LiteratureBase, HumanBase, TheoryBase, QuestionBase, and MethodsBase each
+# owning their own classes as those are added), so the shared TBox now lives
+# in a repo none of them owns. See this repo's GOVERNANCE.md and
+# proposals/0001-shared-kernel-founding-and-migration.md for the full
+# rationale, and conceptbase/proposals/0013-openevo-core-kernel-migration.md
+# for conceptbase's own side of the same change.
+#
+# Scope: still Phase 1 in spirit (see conceptbase's Spec v0.4.0, "Phased
+# Scope") — defines the TBox needed by the two Foundational Repos with real
+# instance data today (ConceptBase's Concept/LPM/Strand/SubStrand/
+# LearningObject/Competency). Classes for the other seven Foundational Repos
+# (oe:Project, oe:Literature, oe:Person, oe:Group, TheoryBase's node-type
+# family, oe:Question, oe:Method) and the promotion of oe:Resource are
+# proposed separately, per repo, as this repo's own RFCs land — see
+# `proposals/`. `reserved` below still marks their IRIs stable in the
+# meantime, exactly as it did before the move.
+# ============================================================================
+
+id: OE-ONTOLOGY
+version: 1.5.0
+status: stable
+authors:
+  - name: OpenEvo Ecosystem Kernel Stewards (see GOVERNANCE.md)
+license: CC-BY-NC-SA-4.0
+phase: 1
+
+"@context":
+  oe:   "https://www.w3id.org/openevo/ontology#"
+  rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+  owl:  "http://www.w3.org/2002/07/owl#"
+  skos: "http://www.w3.org/2004/02/skos/core#"
+  xsd:  "http://www.w3.org/2001/XMLSchema#"
+  dct:  "http://purl.org/dc/terms/"
+
+# ----------------------------------------------------------------------------
+# CLASSES (Phase 1)
+# ----------------------------------------------------------------------------
+classes:
+
+  oe:Entity:
+    label: Entity
+    status: stable
+    abstract: true
+    definition: >
+      Abstract base class for every OpenEvo type, across every Foundational
+      Repo. Not intended to be instantiated directly. Provides the common
+      structural properties (identifier, status, version) that all concrete
+      classes inherit, so new classes added by any Foundational Repo's own
+      RFC automatically gain consistent identifier/versioning semantics
+      without re-declaring them.
+
+  oe:Concept:
+    label: Concept
+    status: stable
+    subClassOf: [oe:Entity, skos:Concept]
+    definition: >
+      A unit of shared meaning — a term, idea, process, or category —
+      used to describe curriculum content. This class defines only the
+      *type*; specific terms (e.g. "Natural Selection") are instances of
+      oe:Concept populated by controlled vocabularies owned and versioned
+      by ConceptBase (see conceptbase/vocabularies/), not defined in this
+      ontology.
+    notes: >
+      Because oe:Concept subclasses skos:Concept, all standard SKOS
+      relations (skos:broader, skos:narrower, skos:related,
+      skos:closeMatch, skos:exactMatch) are available on every Concept
+      instance without redefinition. Cross-vocabulary alignment records
+      are reified separately in conceptbase/alignments/, not modeled as a
+      direct ontology property, so each alignment can carry its own
+      provenance (assertedBy, date, status).
+
+  oe:LPM:
+    label: Learning Progression Model
+    status: stable
+    subClassOf: oe:Entity
+    definition: >
+      A top-level, independently governed model describing how
+      competencies, concepts, and strands develop across a span of
+      learner development (e.g. K–12). An LPM is a structural container:
+      it references, but does not itself contain, lesson content.
+      Instances are owned by ConceptBase.
+    notes: >
+      An LPM references a gradeSchema and subjectSchema by ID rather than
+      embedding them, so it remains independent of any single grade/subject
+      system.
+
+  oe:Strand:
+    label: Strand
+    status: stable
+    subClassOf: oe:Entity
+    definition: >
+      A coherent thematic thread within an LPM (e.g. "Origins of
+      Science"). Strands are recursively compositional via oe:SubStrand,
+      up to a recommended maximum of two nested levels — enforced at
+      validation time, not as an ontology restriction, so the depth limit
+      can be relaxed later without a class-level breaking change.
+      Instances are owned by ConceptBase.
+
+  oe:SubStrand:
+    label: Sub-strand
+    status: stable
+    subClassOf: oe:Strand
+    definition: >
+      A child Strand nested within a parent Strand. Modeled as a
+      *subclass* of oe:Strand rather than a separate sibling type, so
+      recursive nesting uses a single self-referential property
+      (oe:hasSubStrand) instead of one class per nesting level.
+
+  oe:LearningObject:
+    label: Learning Object
+    status: stable
+    subClassOf: oe:Entity
+    definition: >
+      The smallest independently addressable unit of curriculum content
+      referenced by a Strand or SubStrand (e.g. a lesson, activity, or
+      simulation). This ontology defines the type and its structural
+      properties only; actual content lives in external repositories
+      (Collections, Strand repos, etc.), never in ConceptBase itself.
+
+  oe:Competency:
+    label: Competency
+    status: stable
+    subClassOf: oe:Entity
+    definition: >
+      A statement of what a learner should know or be able to do,
+      profiled as an extension of the CASE (1EdTech) CFItem structure —
+      not a novel structure. Instances are owned by ConceptBase; see
+      conceptbase/proposals/0002-competency-case-profile.md and
+      conceptbase/schemas/competency.schema.yaml for the full CFItem field
+      mapping, identifier-bridging rule, and associationType-to-relation
+      mapping table.
+
+# ----------------------------------------------------------------------------
+# CLASSES (Reserved — IRI stable, structure not yet defined)
+# ----------------------------------------------------------------------------
+# Declaring these now means dependent repositories can forward-reference
+# the IRIs (under https://www.w3id.org/openevo/ontology#) without a future
+# breaking change once each is fully specified. Promoting a class out of
+# `reserved` into `classes` is a MINOR version bump (additive), not a
+# MAJOR one, since no existing reference changes. Ownership below anticipates
+# lab_manager/docs/design-notes/ecosystem-base-graph-project-architecture-
+# and-ontology-plan.md §3.1 — recorded here so each class's eventual RFC
+# can reference an already-agreed owner rather than re-deciding it.
+
+reserved:
+  - iri: oe:Collection
+    plannedPhase: 3
+    note: Container aggregating Strands/LPMs for a distributed collection repo.
+  - iri: oe:Assessment
+    plannedPhase: 4
+    plannedOwner: TeachingBase
+  - iri: oe:Practice
+    plannedPhase: 4
+    note: >
+      Slated for retirement in favor of oe:Method (MethodsBase) per the
+      base-graph-project architecture plan §3.3 — kept declared here,
+      unpromoted, until that RFC lands.
+  - iri: oe:Evidence
+    plannedPhase: 4
+    note: To be profiled as an extension of xAPI statement structure.
+  - iri: oe:Resource
+    plannedPhase: 4
+    plannedOwner: TeachingBase
+    note: External/media asset attachable to a LearningObject (profiled from IEEE LOM / schema.org/LearningResource).
+
+# ----------------------------------------------------------------------------
+# DATATYPE PROPERTIES — inherited via oe:Entity
+# ----------------------------------------------------------------------------
+entityProperties:
+
+  oe:identifier:
+    label: identifier
+    domain: oe:Entity
+    range: xsd:string
+    status: stable
+    definition: >
+      The permanent OpenEvo identifier (e.g. OE-CONCEPT-000213). Never
+      changes once assigned, independent of label or definition changes.
+      Resolvable via the owning Foundational Repo's registry, e.g.
+      https://www.w3id.org/openevo/concept/000213.
+
+  oe:status:
+    label: status
+    domain: oe:Entity
+    range: xsd:string
+    status: stable
+    definition: >
+      Lifecycle state of this entity: proposed | accepted | stable |
+      deprecated | superseded | retracted. `retracted` is a parallel
+      terminal state to `deprecated`/`superseded`, not sequential after
+      it — it means the entity was accepted in error or is no longer
+      endorsed, with no implied replacement. See this repo's GOVERNANCE.md
+      for the full lifecycle and deprecation policy (deprecated and
+      retracted entities are never deleted). Sandbox-tier entries
+      (`OE-SANDBOX-*` identifiers) use a separate, smaller status
+      vocabulary and are exempt from this lifecycle by construction.
+
+  oe:version:
+    label: version
+    domain: oe:Entity
+    range: xsd:string
+    status: stable
+    definition: Semantic version (MAJOR.MINOR.PATCH) of this entity.
+
+# ----------------------------------------------------------------------------
+# OBJECT PROPERTIES (Phase 1)
+# ----------------------------------------------------------------------------
+properties:
+
+  oe:hasStrand:
+    label: has strand
+    domain: oe:LPM
+    range: oe:Strand
+    status: stable
+    definition: Relates an LPM to a top-level Strand it contains.
+
+  oe:hasSubStrand:
+    label: has sub-strand
+    domain: oe:Strand
+    range: oe:SubStrand
+    status: stable
+    definition: >
+      Relates a Strand to a nested child Strand. Recursive composition
+      is achieved via SubStrand's subclassing of Strand plus this single
+      property, rather than one property per nesting depth.
+
+  oe:partOfStrand:
+    label: part of strand
+    domain: oe:SubStrand
+    range: oe:Strand
+    status: stable
+    inverseOf: oe:hasSubStrand
+    definition: Inverse of oe:hasSubStrand, for traversal from child to parent.
+
+  oe:hasLearningObject:
+    label: has learning object
+    domain: oe:Strand
+    range: oe:LearningObject
+    status: stable
+    definition: Relates a Strand or SubStrand to a Learning Object it references.
+
+  oe:hasConcept:
+    label: has concept
+    domain: [oe:Strand, oe:LearningObject]
+    range: oe:Concept
+    status: stable
+    definition: >
+      Declares that a Strand or Learning Object addresses a given
+      Concept. This is the primary link between curriculum structure
+      (owned by external repos) and the controlled vocabularies (owned
+      by ConceptBase).
+
+  oe:required:
+    label: required
+    domain: oe:SubStrand
+    range: xsd:boolean
+    status: stable
+    definition: >
+      Whether this SubStrand is obligate (true) or optional/elective
+      (false) within its parent Strand's progression — supports Core
+      Path / Elective Path / Regional Extension / Teacher Choice
+      modeling within a single LPM.
+
+  oe:recommendedSequence:
+    label: recommended sequence
+    domain: oe:Strand
+    range: oe:Strand
+    status: stable
+    definition: Suggested default ordering between sibling Strands/SubStrands.
+
+  oe:alternativeSequence:
+    label: alternative sequence
+    domain: oe:Strand
+    range: oe:Strand
+    status: stable
+    definition: A valid, non-default ordering between sibling Strands/SubStrands.
+
+  oe:parallel:
+    label: parallel with
+    domain: oe:Strand
+    range: oe:Strand
+    status: stable
+    symmetric: true
+    definition: Declares that two Strands/SubStrands may be taught concurrently.
+
+  oe:prerequisiteOf:
+    label: prerequisite of
+    domain: oe:Strand
+    range: oe:Strand
+    status: stable
+    definition: Declares that one Strand/SubStrand must precede another.
+
+  oe:foundationalTo:
+    label: foundational to
+    domain: oe:Strand
+    range: oe:Strand
+    status: stable
+    definition: >
+      Declares that the source Strand/SubStrand should be introduced
+      before the target, but — unlike oe:prerequisiteOf — is itself
+      expected to be revisited and reinforced alongside the target
+      rather than completed and gated behind before the target begins.
+      Models a spiral-curriculum relationship, distinct from both a hard
+      prerequisite gate (oe:prerequisiteOf) and fully concurrent,
+      order-independent teaching (oe:parallel, which is symmetric; this
+      relation is not).
+
+  oe:definedInVocabulary:
+    label: defined in vocabulary
+    domain: oe:Concept
+    range: xsd:string
+    status: stable
+    definition: >
+      References the controlled vocabulary ID (e.g. BIO-CORE-v1.0.0) in
+      which this Concept instance is defined. A Concept may be defined
+      in exactly one home vocabulary but aligned to concepts in others
+      via conceptbase/alignments/.
+
+  oe:contextAssumption:
+    label: context assumption
+    domain: oe:SubStrand
+    range: xsd:string
+    status: accepted
+    definition: >
+      Names an explicit assumption about instructional context this
+      SubStrand body is designed for. Value space
+      (rich-scaffolding | minimal-prior-exposure) is constrained at the
+      schema layer (conceptbase/schemas/common.defs.yaml#/$defs/contextAssumption),
+      not enumerated here — the same pattern already used for oe:status.
+
+  oe:hasTrajectoryVariant:
+    label: has trajectory variant
+    domain: oe:SubStrand
+    range: oe:SubStrand
+    status: accepted
+    definition: >
+      Relates a SubStrand to an alternate SubStrand body occupying the
+      same conceptual slot, tagged with a different oe:contextAssumption.
+      Deliberately NOT a subproperty of oe:hasSubStrand: this is
+      alternation between coequal realizations of one slot, not
+      parent-child composition.
+
+  oe:forkedFrom:
+    label: forked from
+    domain: oe:LPM
+    range: oe:LPM
+    status: accepted
+    definition: >
+      Relates an LPM to the LPM it began as a fork of. Provenance only —
+      does not imply the fork is a subset, a strict revision, or in any
+      way subordinate; a fork is exactly as internally valid as its
+      parent, the same non-hierarchical relationship BIO-CORE and
+      OE-INTERDISCIPLINARY already have to each other, just made
+      discoverable via an explicit lineage pointer instead of left
+      implicit.
+
+  oe:mergedInto:
+    label: merged into
+    domain: oe:LPM
+    range: oe:LPM
+    status: accepted
+    definition: >
+      Relates a sandbox-tier LPM being archived to the LPM its content
+      was substantively absorbed into. Not used on permanent-tier LPMs —
+      see the status: deprecated / supersededBy pattern for that case.
+      Scoped to the sandbox tier, where archival rather than formal
+      deprecation is the operative lifecycle event.
+
+# ----------------------------------------------------------------------------
+# EXTENSIBILITY & VERSIONING NOTES
+# ----------------------------------------------------------------------------
+# - Adding a new Phase-1 property, or promoting a `reserved` class into
+#   `classes`: MINOR version bump (additive, non-breaking).
+# - Changing an existing class/property's domain, range, or semantics,
+#   or removing one: MAJOR version bump, requires an RFC (see
+#   /proposals/ and GOVERNANCE.md) reviewed by a kernel steward.
+# - Wording-only fixes to `definition`/`note` fields: PATCH version bump.
+# - Deprecated classes/properties are never deleted; they receive
+#   status: deprecated plus a supersededBy pointer and remain resolvable.
+# - IRI base migration note: this ontology's canonical namespace is
+#   https://www.w3id.org/openevo/ (registered via the w3id.org permanent
+#   identifier redirection service). If the underlying resolver
+#   infrastructure changes, only the w3id.org redirect target needs
+#   updating — every IRI minted against this namespace remains stable.
+# - Repo migration note: this file's *repository* changed (conceptbase ->
+#   openevo-core, 2026-07-26); its *namespace* (oe:, www.w3id.org/openevo/)
+#   did not and never will as a result of this move, per the IRI base
+#   migration note above.

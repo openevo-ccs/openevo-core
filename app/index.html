@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpenEvo Core — Shared Kernel for the OpenEvo CCS Lab</title>
+  <meta name="description" content="The shared upper ontology, identifier scheme, and cross-repo governance process underneath every Foundational, Graph, and Project repo in the OpenEvo Computational Curriculum Studies Lab." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <p class="eyebrow">www.w3id.org/openevo/</p>
+    <h1>OpenEvo Core</h1>
+    <p class="tagline">The shared kernel underneath every Foundational, Graph, and Project repo in the OpenEvo Computational Curriculum Studies Lab. Owns no curriculum content of its own.</p>
+    <nav class="badges">
+      <a href="https://github.com/openevo-ccs/openevo-core">GitHub</a>
+      <a href="GOVERNANCE.html">Governance</a>
+      <a href="https://github.com/openevo-ccs/conceptbase">ConceptBase</a>
+      <a href="http://openevo.eva.mpg.de">Research Lab</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>What is this?</h2>
+      <p>This repo holds three things every other repo in the ecosystem depends on, but none of them owns: the <code>oe:</code> upper ontology, the <code>OE-{TYPE}-######</code> identifier scheme, and the cross-repo RFC process for proposing a genuinely new shared ontology class. It also anchors the <code>www.w3id.org/openevo/</code> namespace root.</p>
+      <p>It exists because that infrastructure used to live inside <a href="https://github.com/openevo-ccs/conceptbase">ConceptBase</a> — the ecosystem's first mature repo — simply because ConceptBase was, for a time, the only real repo. It isn't anymore. Nine <strong>Foundational Repos</strong> now share this kernel co-equally.</p>
+      <p class="callout">This repo stores no entity instances — no Concepts, LPMs, Strands, Competencies, Resources, Projects, Literature records, People, Groups, Questions, Methods, or TheoryBase nodes. Every one of those lives in its own owning Foundational Repo, referenced by permanent identifier, never duplicated.</p>
+    </section>
+
+    <section>
+      <h2>The ecosystem</h2>
+      <div class="layer kernel">
+        <h3>OpenEvo Core <span>(this repo)</span></h3>
+        <p>oe: upper ontology &middot; identifier scheme &middot; cross-repo RFC process &middot; namespace root</p>
+      </div>
+      <div class="arrow">every Foundational Repo consumes this by reference &mdash; none of them owns it</div>
+      <div class="layer foundational">
+        <h3>Foundational Repos <span>(co-equal peers)</span></h3>
+        <ul class="repo-grid">
+          <li><a href="https://github.com/openevo-ccs/conceptbase">ConceptBase</a><span>Concept, LPM, Strand, LearningObject, Competency</span></li>
+          <li><a href="https://github.com/openevo-ccs/competencybase">CompetencyBase</a><span>Competency (planned migration)</span></li>
+          <li><a href="https://github.com/openevo-ccs/teachingbase">TeachingBase</a><span>Resource, Assessment</span></li>
+          <li><a href="https://github.com/openevo-ccs/projectbase">ProjectBase</a><span>Project</span></li>
+          <li><a href="https://github.com/openevo-ccs/literaturebase">LiteratureBase</a><span>Literature</span></li>
+          <li><a href="https://github.com/openevo-ccs/humanbase">HumanBase</a><span>Person, Group</span></li>
+          <li><a href="https://github.com/openevo-ccs/theorybase">TheoryBase</a><span>Theoretical-position node family</span></li>
+          <li><a href="https://github.com/openevo-ccs/questionbase">QuestionBase</a><span>Question</span></li>
+          <li><a href="https://github.com/openevo-ccs/methodsbase">MethodsBase</a><span>Method</span></li>
+        </ul>
+      </div>
+      <div class="arrow">field-specific interpretation over base facts</div>
+      <div class="layer graph">
+        <h3>Graph Repos</h3>
+        <ul class="repo-grid repo-grid--inline">
+          <li><a href="https://github.com/openevo-ccs/ccs-graph">ccs-graph</a></li>
+          <li><a href="https://github.com/openevo-ccs/openevo-graph">openevo-graph</a></li>
+          <li><a href="https://github.com/openevo-ccs/eva-graph">eva-graph</a></li>
+        </ul>
+      </div>
+      <div class="arrow">thin applications composing Foundational + Graph entities by id</div>
+      <div class="layer project">
+        <h3>Project Repos</h3>
+        <ul class="repo-grid repo-grid--inline">
+          <li><a href="https://github.com/openevo-ccs/EvoMentor">EvoMentor</a></li>
+          <li><a href="https://github.com/openevo-ccs/EvoMentor_DE">EvoMentor_DE</a></li>
+          <li><a href="https://github.com/openevo-ccs/KoMet">KoMet</a></li>
+          <li><a href="https://github.com/openevo-ccs/netlogo">netlogo</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Namespace resolution</h2>
+      <table>
+        <tbody>
+          <tr><td><code>www.w3id.org/openevo/</code></td><td>This page</td></tr>
+          <tr><td><code>www.w3id.org/openevo/ontology</code></td><td>The shared upper ontology (raw YAML)</td></tr>
+          <tr><td><code>www.w3id.org/openevo/concept/{id}</code></td><td>A Concept instance &mdash; resolves to ConceptBase's own registry, unchanged</td></tr>
+          <tr><td><code>www.w3id.org/openevo/lpm/{id}</code>, <code>/strand/{id}</code></td><td>Owning-repo lookup &mdash; unchanged</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Governance</h2>
+      <p>Sized for what this ecosystem actually is today &mdash; one active maintainer, not a multi-institution consortium &mdash; while naming the seats explicitly so growth doesn't silently recentralize onto whoever holds the most repos. See <a href="https://github.com/openevo-ccs/openevo-core/blob/main/GOVERNANCE.md">GOVERNANCE.md</a> for the full Roles table, RFC process, and Identifier Block Allocation registry.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Content: <a href="https://github.com/openevo-ccs/openevo-core/blob/main/LICENSE">CC BY-NC-SA 4.0</a> &middot; Code: <a href="https://github.com/openevo-ccs/openevo-core/blob/main/LICENSE-CODE">MIT</a></p>
+    <p><a href="http://openevo.eva.mpg.de">OpenEvo Computational Curriculum Studies Lab</a></p>
+  </footer>
+</body>
+</html>

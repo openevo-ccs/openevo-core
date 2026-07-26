@@ -1,0 +1,75 @@
+Header set Access-Control-Allow-Origin *
+Options +FollowSymLinks
+RewriteEngine on
+
+# ============================================================================
+# OpenEvo — https://www.w3id.org/openevo/
+# Source of truth for the shared kernel (this page, the ontology, cross-cutting
+# schemas/vocabularies, and this file itself):
+#   https://github.com/openevo-ccs/openevo-core
+#   GOVERNANCE.md (RFC process, identifier scheme, Identifier Block Allocation)
+# Source of truth for entity resolution (concept/competency/alignment/lpm/
+# strand — unchanged by this revision):
+#   https://github.com/openevo-ccs/conceptbase
+# Contact: see readme.md in this directory.
+#
+# Revision note: this supersedes the original RFC-0003 rules (conceptbase#
+# w3id-submission/openevo/.htaccess, merged as perma-id/w3id.org#6389) for
+# exactly four rules — the bare root, /ontology, /schemas/*, /vocab/* — per
+# openevo-core RFC-0001 (github.com/openevo-ccs/openevo-core/proposals/
+# 0001-shared-kernel-founding-and-migration.md). Every other rule (concept/
+# competency/alignment/lpm/strand resolution) is untouched: those already
+# resolved to conceptbase specifically, a peer-equal pattern this revision
+# does not change. No identifier or URL pattern changes as part of this
+# revision — only four redirect targets do, per the namespace's own
+# migration-safety rule (see ontology's own "IRI base migration note").
+#
+# MVP scope note (unchanged from RFC-0003): this resolves every sub-path to
+# something real today, but only as flat JSON / raw YAML — no content
+# negotiation, JSON-LD, RDF, or SPARQL yet (Phase 4; see ConceptBase's own
+# specification). Rules below are written against stable, predictable URL
+# patterns (not one rule per identifier), so this file should not need to
+# change again as new concepts/vocabularies/LPMs/Foundational-Repo entities
+# are added — only as new sub-path *types* are introduced.
+# ============================================================================
+
+# Namespace root — human landing page. CHANGED (was: conceptbase repo).
+RewriteRule ^$ https://openevo-ccs.github.io/openevo-core/ [R=302,L]
+
+# Ontology. CHANGED (was: conceptbase/main/ontologies/core_v1.yaml). Note:
+# oe:ClassName expands to .../ontology#ClassName, and URL fragments are never
+# sent to the server — every class/property in the shared ontology therefore
+# resolves via this single rule.
+RewriteRule ^ontology$ https://raw.githubusercontent.com/openevo-ccs/openevo-core/main/ontologies/core_v1.yaml [R=302,L]
+RewriteRule ^ontology/$ https://raw.githubusercontent.com/openevo-ccs/openevo-core/main/ontologies/core_v1.yaml [R=302,L]
+
+# JSON Schemas (schemas/{name}.schema.yaml, authoring format). UNCHANGED
+# target repo for now: every schema minted so far (concept/lpm/strand/
+# competency/alignment/learningObject/common.defs) is ConceptBase-specific,
+# not a genuinely shared kernel fragment — see openevo-core RFC-0001's
+# "Proposed change" section for why common.defs.yaml was not moved. If a
+# future kernel RFC establishes a genuinely shared schema fragment file in
+# openevo-core, this rule splits by filename at that point, not before.
+RewriteRule ^schemas/([A-Za-z]+)\.schema\.json$ https://raw.githubusercontent.com/openevo-ccs/conceptbase/main/schemas/$1.schema.yaml [R=302,L]
+
+# Controlled vocabularies — {name} includes the version suffix, e.g.
+# BIO-CORE-v1.0.0, matching the vocabRef pattern used throughout ConceptBase.
+# UNCHANGED target repo: every vocabulary minted so far is Concept/Competency-
+# specific (BIO-CORE, OE-INTERDISCIPLINARY, NGSS-LIFE-SCIENCE, AI4K12,
+# DIGCOMPEDU, UNESCO-AI-CFT, KMK-DIGITALE-WELT, CCC), genuinely ConceptBase's
+# own content, not kernel content. A cross-cutting vocabulary reused by
+# multiple Foundational Repos (e.g. EPISTEMIC-STATUS, once TheoryBase mints
+# it) would resolve against openevo-core instead — not yet needed.
+RewriteRule ^vocab/([A-Za-z0-9.\-]+)$ https://raw.githubusercontent.com/openevo-ccs/conceptbase/main/vocabularies/$1.yaml [R=302,L]
+
+# Concepts and cross-vocabulary alignment records — resolved against
+# ConceptBase's generated flat-JSON registry. UNCHANGED.
+RewriteRule ^concept/([A-Za-z0-9\-]+)$ https://openevo-ccs.github.io/conceptbase/registry/concept/$1.json [R=302,L]
+RewriteRule ^competency/([A-Za-z0-9\-]+)$ https://openevo-ccs.github.io/conceptbase/registry/competency/$1.json [R=302,L]
+RewriteRule ^alignment/([A-Za-z0-9\-]+)$ https://openevo-ccs.github.io/conceptbase/registry/alignment/$1.json [R=302,L]
+
+# LPMs and Strands live in independently governed dependent repositories,
+# not in conceptbase itself. UNCHANGED — still resolved via ConceptBase's
+# own static lookup page.
+RewriteRule ^lpm/([A-Za-z0-9\-]+)$ https://openevo-ccs.github.io/conceptbase/registry/resolve.html#lpm/$1 [R=302,L]
+RewriteRule ^strand/([A-Za-z0-9\-]+)$ https://openevo-ccs.github.io/conceptbase/registry/resolve.html#strand/$1 [R=302,L]
