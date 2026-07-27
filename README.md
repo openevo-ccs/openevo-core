@@ -1,6 +1,6 @@
 # OpenEvo Core
 
-> The shared kernel underneath every Foundational, Graph, and Project repo in the OpenEvo Computational Curriculum Studies (CCS) Lab. Owns no curriculum content of its own.
+> The shared kernel underneath every Foundational and Project repo in the OpenEvo Computational Curriculum Studies (CCS) Lab — Project repos include the free-schema field-knowledge repos (`ccs-graph`, `openevo-graph`, `eva-graph`, kind: `graph`), OECB-governed LPM content repos (kind: `lpm`), and thin applications (kind: `app`); see `lab_manager/docs/design-notes/ecosystem-two-layer-architecture-simplification-plan.md`. Owns no curriculum content of its own.
 
 [![OpenEvo Lab](https://img.shields.io/badge/OpenEvo%20Lab-openevo.eva.mpg.de-teal)](http://openevo.eva.mpg.de)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/Content%20License-CC--BY--NC--SA%204.0-lightgrey.svg)](LICENSE)
@@ -73,7 +73,7 @@ Two independently governed reference LPMs currently depend on ConceptBase's own 
 
 - ❌ Any entity instance data (Concepts, LPMs, Strands, Competencies, Resources, Projects, Literature, People, Groups, Questions, Methods, TheoryBase nodes) — those live in their owning Foundational Repo.
 - ❌ Entity-specific JSON Schemas or their `$defs` (e.g. `conceptId`/`lpmId`/`strandId` patterns) — those stay in `conceptbase/schemas/`, since they encode ConceptBase's own validation rules, not generic kernel content.
-- ❌ Field-specific interpretation, relations, or contested-claims data — that's the Graph layer's job (`ccs-graph`, `openevo-graph`, `eva-graph`).
+- ❌ Field-specific interpretation, relations, or contested-claims data — that's the job of graph-kind Project repos (`ccs-graph`, `openevo-graph`, `eva-graph`), which get free local schema for exactly this content.
 
 ## Namespace
 
