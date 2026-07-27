@@ -24,7 +24,7 @@ This document exists because `conceptbase` — the ecosystem's first mature repo
 |---|---|---|
 | **Kernel steward** | Merge rights on this repo; final arbitration on upper-ontology changes, identifier-scheme changes, and namespace-root changes. | Dustin Eirdosh |
 | **Foundational Repo delegate** (one seat per base: Concept, Competency, Teaching, Project, Literature, Human, Theory, Question, Method) | Reviews any kernel RFC that would affect their Foundational Repo's entity type — e.g. a new `oe:` class their repo will instantiate, or a block-allocation change. | Dustin Eirdosh (all nine seats today — see note below) |
-| **Graph/Project representative** | Non-voting review on kernel RFCs that would change what graph or project repos can reference. | Dustin Eirdosh |
+| **Project-repo representative** | Non-voting review on kernel RFCs that would change what Project repos (any kind — `graph`/`lpm`/`app`) can reference. Distinct from the ProjectBase Foundational-Repo-delegate seat above, which is about the `oe:Project` entity type specifically. | Dustin Eirdosh |
 | **Contributors** | Anyone; submit RFCs via pull request against `proposals/`. | — |
 
 **Note on seat consolidation:** every seat above is currently the same person. The table exists so that the day a second independent contributor to *any* Foundational Repo shows up (HumanBase and LiteratureBase are the most likely first cases — see the base-graph-project plan §13 item 3), they slot into an already-defined seat instead of governance being invented ad hoc under time pressure. This mirrors a lesson already learned elsewhere in this ecosystem (`conceptbase/GOVERNANCE.md`'s Identifier Block Allocation section): don't build multi-person process for a committee that doesn't exist yet.
@@ -54,7 +54,7 @@ A status **MUST NOT** revert (e.g. `deprecated` back to `stable`) without a new 
 
 ## Deprecation Policy
 
-No `oe:` class or property is ever removed once `status: accepted` or higher. A deprecated one **MUST** remain resolvable at its existing IRI indefinitely, carry a `supersededBy` pointer where one exists, and continue to appear in query results, so no Foundational, Graph, or Project repo is ever silently broken by a kernel change.
+No `oe:` class or property is ever removed once `status: accepted` or higher. A deprecated one **MUST** remain resolvable at its existing IRI indefinitely, carry a `supersededBy` pointer where one exists, and continue to appear in query results, so no Foundational or Project repo (of any kind — `graph`/`lpm`/`app`) is ever silently broken by a kernel change.
 
 ## Independent Versioning
 
