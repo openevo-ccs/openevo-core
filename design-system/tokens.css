@@ -1,0 +1,72 @@
+/* OpenEvo CCS Lab — shared design tokens.
+   Canonical home for the CSS custom properties every static app in the ecosystem
+   (conceptbase/app, and any future public static app) uses for surfaces,
+   text, chart series, and status colors. Originally authored in conceptbase/app/css/
+   styles.css (itself derived from the dataviz skill's validated default,
+   references/palette.md), hand-copied into lab_manager/app/css/styles.css, then
+   consolidated into openevo-graph/design-system/ on 2026-07-23, then lab_manager on
+   2026-07-27. Moved here 2026-07-28 when lab_manager went private (internal-only
+   dashboard) — openevo-core is the shared kernel repo, the correct public home for
+   an asset every public-facing app in the ecosystem depends on.
+
+   Tokens only — no component/layout rules. Each consuming app keeps its own
+   layout/component CSS and just stops redeclaring this block.
+
+   Theme is selected via [data-theme] (explicit toggle) or prefers-color-scheme
+   (OS default) — the toggle always wins. */
+
+:root {
+  color-scheme: light;
+  --surface-1: #fcfcfb;
+  --surface-2: #ffffff;
+  --page-plane: #f9f9f7;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #898781;
+  --gridline: #e1e0d9;
+  --baseline: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.10);
+  --border-strong: rgba(11, 11, 11, 0.18);
+  --series-a: #2a78d6;
+  --series-b: #008300;
+  --good: #0ca30c;
+  --warning: #fab219;
+  --serious: #ec835a;
+  --critical: #d03b3b;
+  --radius: 8px;
+  --radius-sm: 5px;
+  --font: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --surface-1: #1a1a19;
+    --surface-2: #212120;
+    --page-plane: #0d0d0d;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted: #898781;
+    --gridline: #2c2c2a;
+    --baseline: #383835;
+    --border: rgba(255, 255, 255, 0.10);
+    --border-strong: rgba(255, 255, 255, 0.18);
+    --series-a: #3987e5;
+    --series-b: #008300;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-1: #1a1a19;
+  --surface-2: #212120;
+  --page-plane: #0d0d0d;
+  --text-primary: #ffffff;
+  --text-secondary: #c3c2b7;
+  --text-muted: #898781;
+  --gridline: #2c2c2a;
+  --baseline: #383835;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --series-a: #3987e5;
+  --series-b: #008300;
+}
