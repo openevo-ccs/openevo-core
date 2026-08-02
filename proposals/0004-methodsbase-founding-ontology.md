@@ -2,7 +2,7 @@
 
 **Type:** `content`
 
-**Status:** `proposed`
+**Status:** `accepted`
 **Author(s):** Claude, for Dustin Eirdosh
 **Date:** 2026-08-02
 
@@ -113,6 +113,8 @@ See `lab_manager/docs/design-notes/methodsbase-founding-design-and-dbr-model-int
 
 ## Review
 
-- [ ] Foundational Repo delegate approval (Method seat — Dustin)
-- [ ] Kernel Steward approval (Dustin)
-- [ ] For `specification-amendment` RFCs: N/A — this is `content`, not `specification-amendment`
+- [x] Foundational Repo delegate approval (Method seat — Dustin) — 2026-08-02
+- [x] Kernel Steward approval (Dustin) — 2026-08-02
+- [x] For `specification-amendment` RFCs: N/A — this is `content`, not `specification-amendment`
+
+**Status: accepted, 2026-08-02.**

@@ -81,14 +81,20 @@ The cross-repo registry of reserved numeric blocks, so independently authored vo
 | `OE-LPM` | Sequential | No sub-blocking — LPMs don't nest |
 | `NGSS-LIFE-SCIENCE` (Competency) | `OE-COMPETENCY-000100`–`000199` | |
 | `AI4K12` (Competency) | `OE-COMPETENCY-000200`–`000699` | Wider block, reserved up front per RFC-0007 |
-| `DIGCOMPEDU` (Competency) | `OE-COMPETENCY-000700`–`000799` | |
-| `UNESCO-AI-CFT` (Competency) | `OE-COMPETENCY-000800`–`000899` | |
-| `KMK-DIGITALE-WELT` (Competency) | `OE-COMPETENCY-000900`–`000999` | |
-| `CCC` (Competency) | `OE-COMPETENCY-001000`–`001099` | Natively authored, not imported |
+| `EVO-ED-ASSESSMENT-TARGETS` (Competency) | `OE-COMPETENCY-000700`–`000799` | Per RFC-0014 |
+| `OPENEVO-CORE-COMPETENCIES` (Competency) | `OE-COMPETENCY-000800`–`000899` | First OpenEvo-authored competency vocabulary; per RFC-0016. Whole block reserved for all four planned OpenEvo core competencies (Computational Thinking, Evolutionary Causal Reasoning, Decentralized Causal Reasoning, Systems Thinking), not just RFC-0016's 7 entries. |
 
-*(This table mirrors `conceptbase/GOVERNANCE.md`'s Identifier Block Allocation section at time of migration — 2026-07-26. ConceptBase's own file remains the live, authoritative record of its own blocks' current usage; this copy exists so a new Foundational Repo reserving its first block can see the whole cross-repo picture in one place without needing to check nine separate `GOVERNANCE.md` files. Keep both in sync when either changes.)*
+*(This table mirrors `conceptbase/GOVERNANCE.md`'s Identifier Block Allocation section, re-synced 2026-08-02 after it had drifted since the 2026-07-26 migration. ConceptBase's own file remains the live, authoritative record of its own blocks' current usage; this copy exists so a new Foundational Repo reserving its first block can see the whole cross-repo picture in one place without needing to check nine separate `GOVERNANCE.md` files. Keep both in sync when either changes.)*
 
-**Other Foundational Repos** (CompetencyBase*, TeachingBase, ProjectBase, LiteratureBase, HumanBase, TheoryBase, QuestionBase, MethodsBase): no blocks reserved yet — each reserves its own via its founding RFC when it mints its first identifier. Rows will be added here as that happens.
+**Known unresolved collision, found during this re-sync (2026-08-02):** the unmerged branch `rfc-0011-teacher-competency-frameworks` (conceptbase) reserves `DIGCOMPEDU 000700–000799`, `UNESCO-AI-CFT 000800–000899`, `KMK-DIGITALE-WELT 000900–000999`, and `CCC 001000–001099` — a range now **entirely double-allocated** by RFC-0014 (`000700`–`000799`, merged) and RFC-0016 (`000800`–`000899`, merged) above. RFC-0011 cannot be merged as currently drafted; it needs fresh block numbers (the next free Competency block starts at `000900`) before it's touched again. Not fixed here — re-deriving an entire unmerged branch's id assignments is a real, separate task, not a side effect of this sync.
+
+**Other Foundational Repos:**
+
+| Vocabulary/Entity type | Block | Notes |
+|---|---|---|
+| `OPENEVO-DBR-MODEL` (Method) | `OE-METHOD-000100`–`000199` | First MethodsBase vocabulary; per RFC-0004. 9 seed records (the DBR Model + its 4 phases, the Multi-Agent Deliberation Protocol, the EvoFlex assessment pattern, Kattmann's didactic-reduction model, one `proposed` curriculum-network-analysis method). |
+
+TeachingBase, ProjectBase, LiteratureBase, HumanBase, TheoryBase, QuestionBase: no blocks reserved yet — each reserves its own via its founding RFC when it mints its first identifier. Rows will be added here as that happens.
 
 *\*Note: `oe:Competency` instances currently live in ConceptBase (see table above); whether CompetencyBase's planned migration (base-graph-project plan §3.1) relocates existing blocks or only governs new ones is a decision for that migration's own RFC, not this document.*
 
