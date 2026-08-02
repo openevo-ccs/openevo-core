@@ -1,0 +1,11 @@
+# Mixed content repo (ontologies/, proposals/, app/) - editor/OS noise
+.vscode/
+.idea/
+.continue/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Defense in depth
+.env
+.env.*
