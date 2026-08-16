@@ -86,7 +86,7 @@ directly against a live FAIR-theory review (`fair-theory-specification` skill) b
   pre-existing QuestionBase records still validate unchanged. Needs QuestionBase's own Foundational
   Repo delegate sign-off (same seat-holder, Dustin, per `GOVERNANCE.md`) alongside this RFC's review,
   not folded silently into RFC-0003.
-- **`theorybase/records/hypotheses.yaml`**: adds `hypothesis:openevo-dbr-model-core-claim`, using
+- **`theorybase/records/hypotheses.yaml`**: adds `OE-HYPOTHESIS-openevo-dbr-model-core-claim`, using
   TheoryBase's existing (not new) `hypothesis-record.schema.json`, to state the OpenEvo DBR Model's
   own falsifiable core claim as a checkable object rather than only as prose on the model's public
   page. `method:openevo-dbr-model`'s new `theoreticalGrounding` field references it by id. This is
@@ -106,7 +106,7 @@ See `lab_manager/docs/design-notes/methodsbase-founding-design-and-dbr-model-int
 - `questionbase/schema/question-record.schema.json`: adds `relatedMethods` (see above).
 - `questionbase/records/questions.yaml`: adds 10 records drawn from Hanisch (forthcoming) Kap. 15,
   cross-walked to MethodsBase's DBR-phase records via `relatedMethods`.
-- `theorybase/records/hypotheses.yaml`: adds `hypothesis:openevo-dbr-model-core-claim` (see above).
+- `theorybase/records/hypotheses.yaml`: adds `OE-HYPOTHESIS-openevo-dbr-model-core-claim` (see above).
 - `openevo-core/GOVERNANCE.md`: add the "Other Foundational Repos" row for MethodsBase's new block
   once this RFC is actually reviewed (not preemptively — matching how RFC-0003's row wasn't added
   until QuestionBase's block was live).
