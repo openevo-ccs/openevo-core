@@ -18,7 +18,7 @@ This supersedes the original registration ([RFC-0003](https://github.com/openevo
 | `https://w3id.org/openevo/` | OpenEvo Core's landing page (this ecosystem's shared-kernel repo) |
 | `https://w3id.org/openevo/ontology` | The shared upper ontology (raw YAML; `#ClassName` fragments select a class client-side) |
 | `https://w3id.org/openevo/vocab/{name-with-version}` | A controlled vocabulary file (ConceptBase), e.g. `vocab/BIO-CORE-v1.0.0` |
-| `https://w3id.org/openevo/concept/{id}` | A single Concept instance as flat JSON (ConceptBase), e.g. `concept/OE-CONCEPT-000102` |
+| `https://w3id.org/openevo/concept/{id}` | A single Concept instance as flat JSON (ConceptBase), e.g. `concept/OE-CONCEPT-bio-core-natural-selection` |
 | `https://w3id.org/openevo/competency/{id}` | A single Competency instance as flat JSON (ConceptBase) |
 | `https://w3id.org/openevo/alignment/{id}` | A cross-vocabulary alignment record as flat JSON (ConceptBase) |
 | `https://w3id.org/openevo/lpm/{id}` | The dependent repository that owns a given Learning Progression Model identifier |

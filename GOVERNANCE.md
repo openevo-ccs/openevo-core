@@ -70,9 +70,19 @@ Filename convention unchanged from `conceptbase/GOVERNANCE.md`: bare `_v{MAJOR}`
 
 The cross-repo registry of reserved numeric blocks, so independently authored vocabularies/LPMs across every Foundational Repo never collide. Each governed unit reserves its own block via its founding RFC — in whichever repo owns that entity type, cross-referenced here.
 
+**Id scheme superseded (2026-08-16):** both `oe:Concept` and `oe:Competency` have migrated off
+numeric block-allocation entirely, to `OE-CONCEPT-<vocab-slug>-<code-slug>` /
+`OE-COMPETENCY-<vocab-slug>-<code-slug>` (e.g. `OE-CONCEPT-000102` →
+`OE-CONCEPT-bio-core-natural-selection`; `OE-COMPETENCY-000800` →
+`OE-COMPETENCY-openevo-core-competencies-ct`). See `conceptbase/GOVERNANCE.md` and
+`competencybase/GOVERNANCE.md` for the live registries; the table below is retained as
+**historical record**, not a live one — new vocabularies mint slug-based ids directly in their
+owning repo, no block reservation here. `oe:LPM`/`oe:Strand` are unaffected and still use numeric
+block-allocation.
+
 **ConceptBase** (`oe:Concept`, `oe:LPM`, `oe:Strand`, `oe:Competency`):
 
-| Vocabulary/Entity type | Block | Notes |
+| Vocabulary/Entity type | Block (historical) | Notes |
 |---|---|---|
 | `BIO-CORE` (Concept) | `OE-CONCEPT-000100`–`000199` | See `conceptbase/GOVERNANCE.md` for current usage |
 | `OE-INTERDISCIPLINARY` (Concept) | `OE-CONCEPT-000200`–`000299`, plus `000090`–`000099` cross-cutting | See `conceptbase/GOVERNANCE.md` |
