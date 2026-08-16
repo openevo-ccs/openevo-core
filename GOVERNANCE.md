@@ -110,8 +110,14 @@ block-allocation.
 numeric block, no vocab-slug segment (same reasoning as TheoryBase/MethodsBase above — one corpus,
 no multi-vocabulary structure). 38 records.
 
-TeachingBase, ProjectBase, LiteratureBase, HumanBase: no blocks/ids reserved yet, and no founding
-RFC drafted — each needs one before minting a permanent id. Rows will be added here as that happens.
+**LiteratureBase** (`oe:Literature`) — per RFC-0005 (accepted 2026-08-16, the first of the nine
+Foundational Repos founded via a from-scratch RFC rather than reviewing an existing draft):
+`OE-LITERATURE-<slug>`, no numeric block, no vocab-slug segment. Deliberately not DOI-derived even
+though most records have one — see RFC-0005's own ID block reservation section for why. 119
+records.
+
+TeachingBase, ProjectBase, HumanBase: no blocks/ids reserved yet, and no founding RFC drafted —
+each needs one before minting a permanent id. Rows will be added here as that happens.
 
 *\*Note: `oe:Competency` instances currently live in ConceptBase (see table above); whether CompetencyBase's planned migration (base-graph-project plan §3.1) relocates existing blocks or only governs new ones is a decision for that migration's own RFC, not this document.*
 
