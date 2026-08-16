@@ -102,9 +102,11 @@ block-allocation.
 
 | Vocabulary/Entity type | Block | Notes |
 |---|---|---|
-| `OPENEVO-DBR-MODEL` (Method) | `OE-METHOD-000100`–`000199` | First MethodsBase vocabulary; per RFC-0004. 9 seed records (the DBR Model + its 4 phases, the Multi-Agent Deliberation Protocol, the EvoFlex assessment pattern, Kattmann's didactic-reduction model, one `proposed` curriculum-network-analysis method). |
+| `OPENEVO-DBR-MODEL` (Method) | `OE-METHOD-000100`–`000199` | First MethodsBase vocabulary; per RFC-0004. 9 seed records (the DBR Model + its 4 phases, the Multi-Agent Deliberation Protocol, the EvoFlex assessment pattern, Kattmann's didactic-reduction model, one `proposed` curriculum-network-analysis method). Id scheme superseded 2026-08-16 alongside TheoryBase below — see that migration. |
 
-TeachingBase, ProjectBase, LiteratureBase, HumanBase, TheoryBase, QuestionBase: no blocks reserved yet — each reserves its own via its founding RFC when it mints its first identifier. Rows will be added here as that happens.
+**TheoryBase** (`oe:Theory`, `oe:Proposition`, `oe:Assumption`, `oe:Evidence`, `oe:Context`, `oe:CompetingProposition`, `oe:Misconception`, `oe:CrossDomainConstruct`, `oe:Mechanism`, `oe:Hypothesis`, `oe:DesignPrinciple`, `oe:CurriculumDecision`, `oe:LearningDependency`) — per RFC-0002 (accepted 2026-08-16): `OE-{TYPE}-<slug>`, no numeric block, no vocab-slug segment (no analogous multi-vocabulary structure exists yet — see RFC-0002's own ID block reservation section for why). Each type is its own namespace, collision-free by construction rather than by reserved range.
+
+TeachingBase, ProjectBase, LiteratureBase, HumanBase, QuestionBase: no blocks/ids reserved yet — each reserves its own via its founding RFC when it mints its first identifier. Rows will be added here as that happens.
 
 *\*Note: `oe:Competency` instances currently live in ConceptBase (see table above); whether CompetencyBase's planned migration (base-graph-project plan §3.1) relocates existing blocks or only governs new ones is a decision for that migration's own RFC, not this document.*
 

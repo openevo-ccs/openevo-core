@@ -2,9 +2,12 @@
 
 **Type:** `content`
 
-**Status:** `proposed`
+**Status:** `accepted`
 **Author(s):** Claude, for Dustin Eirdosh
-**Date:** 2026-07-26
+**Date:** 2026-07-26 (amended 2026-08-16: ID block reservation rewritten to the slug-vocab scheme
+locked in by the 2026-08-05/2026-08-16 governance-standardization sessions, superseding this RFC's
+original numeric-block text before acceptance rather than accepting stale text and re-migrating
+later)
 
 ## Motivation
 
@@ -49,25 +52,41 @@ No existing standard directly models "theory as decomposable, versioned, competi
 
 ## ID block reservation
 
-Per `GOVERNANCE.md#identifier-block-allocation`, TheoryBase reserves its first block for each of the thirteen new types, all `000100`–`000199` (first vocabulary/collection — the Kampourakis and Hurst-Lab dispute corpora):
+**Rewritten 2026-08-16, before acceptance** (originally reserved numeric blocks per type, e.g.
+`OE-THEORY-000100`–`000199`; that scheme was superseded ecosystem-wide by the 2026-08-05/2026-08-16
+governance-standardization sessions before this RFC was ever accepted, so it never actually minted
+any numeric ids — rewriting here avoids accepting already-stale text and re-migrating immediately
+after). TheoryBase ids take the form `OE-{TYPE}-<slug>`, reusing each record's existing,
+already-unique hand-authored `slug` field directly — no vocab-slug segment, unlike ConceptBase/
+CompetencyBase, since TheoryBase has no analogous multi-vocabulary structure today (its 64 records
+sort into two dispute corpora — Kampourakis, Hurst-Lab — plus hand-authored cross-cutting content,
+but that grouping was never a reservable/collision-relevant unit even under the original numeric
+scheme, which gave all thirteen types one shared first block regardless of corpus). If a second,
+genuinely parallel authored collection appears later, a vocab-slug segment can be introduced then —
+not fabricated now for a distinction that doesn't yet exist:
 
-| Type | Block |
-|---|---|
-| `OE-THEORY-######` | `000100`–`000199` |
-| `OE-PROPOSITION-######` | `000100`–`000199` |
-| `OE-ASSUMPTION-######` | `000100`–`000199` |
-| `OE-EVIDENCE-######` | `000100`–`000199` |
-| `OE-CONTEXT-######` | `000100`–`000199` |
-| `OE-COMPETINGPROPOSITION-######` | `000100`–`000199` |
-| `OE-MISCONCEPTION-######` | `000100`–`000199` |
-| `OE-CROSSDOMAINCONSTRUCT-######` | `000100`–`000199` |
-| `OE-MECHANISM-######` | `000100`–`000199` |
-| `OE-HYPOTHESIS-######` | `000100`–`000199` |
-| `OE-DESIGNPRINCIPLE-######` | `000100`–`000199` |
-| `OE-CURRICULUMDECISION-######` | `000100`–`000199` |
-| `OE-LEARNINGDEPENDENCY-######` | `000100`–`000199` |
+| Type | Id form | Records today |
+|---|---|---|
+| `oe:Theory` | `OE-THEORY-<slug>` | 7 |
+| `oe:Proposition` | `OE-PROPOSITION-<slug>` | 20 |
+| `oe:Assumption` | `OE-ASSUMPTION-<slug>` | 10 |
+| `oe:Evidence` | `OE-EVIDENCE-<slug>` | 0 (reserved, unbuilt) |
+| `oe:Context` | `OE-CONTEXT-<slug>` | 0 (reserved, unbuilt) |
+| `oe:CompetingProposition` | `OE-COMPETINGPROPOSITION-<slug>` | 0 (reserved, unbuilt) |
+| `oe:Misconception` | `OE-MISCONCEPTION-<slug>` | 10 |
+| `oe:CrossDomainConstruct` | `OE-CROSSDOMAINCONSTRUCT-<slug>` | 1 |
+| `oe:Mechanism` | `OE-MECHANISM-<slug>` | 7 |
+| `oe:Hypothesis` | `OE-HYPOTHESIS-<slug>` | 5 |
+| `oe:DesignPrinciple` | `OE-DESIGNPRINCIPLE-<slug>` | 2 |
+| `oe:CurriculumDecision` | `OE-CURRICULUMDECISION-<slug>` | 2 |
+| `oe:LearningDependency` | `OE-LEARNINGDEPENDENCY-<slug>` | 0 (schema exists, zero records) |
 
-(Each type prefix is its own namespace, matching the existing `OE-CONCEPT-`/`OE-STRAND-`/`OE-COMPETENCY-` pattern — no cross-type collision risk.) Until this RFC merges, TheoryBase content uses slug-based provisional ids (`theory:dcr-position`, `proposition:niche-selection`, etc.) with `provisional.blocked_on` pointing here, exactly as `humanbase`/`literaturebase` already do for their own pending founding RFCs.
+(Each type prefix is its own namespace, matching the existing `OE-CONCEPT-`/`OE-STRAND-`/
+`OE-COMPETENCY-` pattern — no cross-type collision risk.) Execution (renumbering the 64 existing
+records, updating all 9 populated schemas' `id` pattern, adding a real lifecycle `status` field
+where none existed before, and sweeping the ecosystem for real citers) happens as this RFC's
+acceptance is executed, not deferred as a separate pass — unlike MethodsBase's RFC-0004, whose
+execution gap this RFC deliberately doesn't repeat.
 
 ## Files affected
 
@@ -77,6 +96,6 @@ Per `GOVERNANCE.md#identifier-block-allocation`, TheoryBase reserves its first b
 
 ## Review
 
-- [ ] Foundational Repo delegate approval (TheoryBase seat — Dustin)
-- [ ] Kernel Steward approval (Dustin)
-- [ ] For `specification-amendment` RFCs: N/A — this is `content`, not `specification-amendment`
+- [x] Foundational Repo delegate approval (TheoryBase seat — Dustin) — 2026-08-16
+- [x] Kernel Steward approval (Dustin) — 2026-08-16
+- [x] For `specification-amendment` RFCs: N/A — this is `content`, not `specification-amendment`
