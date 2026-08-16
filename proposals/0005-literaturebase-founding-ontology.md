@@ -54,7 +54,8 @@ pattern (`provenance`, `status`) rather than inventing a new one.
 `OE-LITERATURE-<slug>`, reusing each record's existing hand-authored `slug` field (e.g.
 `kampourakis-2020`) — no vocab-slug segment, no numeric block, matching TheoryBase/QuestionBase/
 MethodsBase's precedent. **Deliberately not DOI-derived**, even though 77 of 119 current records
-use a DOI-escaped provisional id (`lit:doi-10-1186-s12052-019-0116-z`): the existing `slug` field
+use a DOI-escaped provisional id (e.g. `lit:doi-10-1186-s12052-019-0116-z`, kampourakis-2020's own
+former id): the existing `slug` field
 is already unique across the whole corpus (it's the actual filename today), shorter, human-legible,
 and DOI-independence means a record's permanent id survives a later-discovered DOI correction or a
 non-DOI source gaining one. The `citation.doi` field remains the authoritative place DOI identity
