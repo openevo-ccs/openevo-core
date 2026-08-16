@@ -89,7 +89,7 @@ directly against a live FAIR-theory review (`fair-theory-specification` skill) b
 - **`theorybase/records/hypotheses.yaml`**: adds `OE-HYPOTHESIS-openevo-dbr-model-core-claim`, using
   TheoryBase's existing (not new) `hypothesis-record.schema.json`, to state the OpenEvo DBR Model's
   own falsifiable core claim as a checkable object rather than only as prose on the model's public
-  page. `method:openevo-dbr-model`'s new `theoreticalGrounding` field references it by id. This is
+  page. `OE-METHOD-openevo-dbr-model`'s new `theoreticalGrounding` field references it by id. This is
   the FAIR-*theory* half of "use the lab's FAIR Theory tooling" (Van Lissa et al. 2026) — deliberately
   **not** built against `ccs-graph/schema/fair-theory-v1.schema.json`, confirmed to not yet exist
   (`ccs-graph/schema/` has zero files); TheoryBase's real, already-populated schema is the actual

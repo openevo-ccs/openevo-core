@@ -102,7 +102,7 @@ block-allocation.
 
 | Vocabulary/Entity type | Block | Notes |
 |---|---|---|
-| `OPENEVO-DBR-MODEL` (Method) | `OE-METHOD-000100`–`000199` | First MethodsBase vocabulary; per RFC-0004. 9 seed records (the DBR Model + its 4 phases, the Multi-Agent Deliberation Protocol, the EvoFlex assessment pattern, Kattmann's didactic-reduction model, one `proposed` curriculum-network-analysis method). Id scheme superseded 2026-08-16 alongside TheoryBase below — see that migration. |
+| `OPENEVO-DBR-MODEL` (Method) | `OE-METHOD-<slug>` | RFC-0004. 9 records (the DBR Model + its 4 phases, the Multi-Agent Deliberation Protocol, the EvoFlex assessment pattern, Kattmann's didactic-reduction model, one `proposed` curriculum-network-analysis method). Id scheme migrated 2026-08-16 from numeric block-allocation to `OE-METHOD-<slug>` (reusing each record's own `slug` field), same pattern as TheoryBase below. |
 
 **TheoryBase** (`oe:Theory`, `oe:Proposition`, `oe:Assumption`, `oe:Evidence`, `oe:Context`, `oe:CompetingProposition`, `oe:Misconception`, `oe:CrossDomainConstruct`, `oe:Mechanism`, `oe:Hypothesis`, `oe:DesignPrinciple`, `oe:CurriculumDecision`, `oe:LearningDependency`) — per RFC-0002 (accepted 2026-08-16): `OE-{TYPE}-<slug>`, no numeric block, no vocab-slug segment (no analogous multi-vocabulary structure exists yet — see RFC-0002's own ID block reservation section for why). Each type is its own namespace, collision-free by construction rather than by reserved range.
 
