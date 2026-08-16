@@ -2,9 +2,12 @@
 
 **Type:** `content`
 
-**Status:** `proposed`
+**Status:** `accepted`
 **Author(s):** Claude, for Dustin Eirdosh
-**Date:** 2026-07-26
+**Date:** 2026-07-26 (amended 2026-08-16: ID block reservation rewritten to the slug-scheme locked
+in by the 2026-08-05/2026-08-16 governance-standardization sessions, superseding this RFC's
+original numeric-block text before acceptance rather than accepting stale text and re-migrating
+later — mirrors the same fix applied to RFC-0002)
 
 ## Motivation
 
@@ -39,7 +42,14 @@ No existing standard models "an open knowledge gap explicitly tied to a specific
 
 ## ID block reservation
 
-Per `GOVERNANCE.md#identifier-block-allocation`: `OE-QUESTION-000100`–`000199` (first block, this dispute's knowledge-gap corpus). Until merged, QuestionBase content uses provisional `question:<slug>` ids with `provisional.blocked_on` pointing here.
+**Rewritten 2026-08-16, before acceptance** (originally reserved `OE-QUESTION-000100`–`000199`;
+that numeric scheme was superseded ecosystem-wide before this RFC was ever accepted, so it never
+actually minted any ids). QuestionBase ids take the form `OE-QUESTION-<slug>`, reusing each
+record's existing hand-authored `slug` field — no vocab-slug segment, matching MethodsBase's
+`OE-METHOD-<slug>` precedent: QuestionBase has one corpus (the Kampourakis-dispute knowledge gaps),
+no analogous multi-vocabulary structure. 38 real records exist today. Execution (id migration,
+schema pattern fix, ecosystem citer sweep) happens as this RFC's acceptance is executed, not
+deferred as a separate pass — same discipline RFC-0002's execution already established.
 
 ## Files affected
 
@@ -48,6 +58,6 @@ Per `GOVERNANCE.md#identifier-block-allocation`: `OE-QUESTION-000100`–`000199`
 
 ## Review
 
-- [ ] Foundational Repo delegate approval (QuestionBase seat — Dustin)
-- [ ] Kernel Steward approval (Dustin)
-- [ ] For `specification-amendment` RFCs: N/A — this is `content`, not `specification-amendment`
+- [x] Foundational Repo delegate approval (QuestionBase seat — Dustin) — 2026-08-16
+- [x] Kernel Steward approval (Dustin) — 2026-08-16
+- [x] For `specification-amendment` RFCs: N/A — this is `content`, not `specification-amendment`

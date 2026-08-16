@@ -106,7 +106,12 @@ block-allocation.
 
 **TheoryBase** (`oe:Theory`, `oe:Proposition`, `oe:Assumption`, `oe:Evidence`, `oe:Context`, `oe:CompetingProposition`, `oe:Misconception`, `oe:CrossDomainConstruct`, `oe:Mechanism`, `oe:Hypothesis`, `oe:DesignPrinciple`, `oe:CurriculumDecision`, `oe:LearningDependency`) — per RFC-0002 (accepted 2026-08-16): `OE-{TYPE}-<slug>`, no numeric block, no vocab-slug segment (no analogous multi-vocabulary structure exists yet — see RFC-0002's own ID block reservation section for why). Each type is its own namespace, collision-free by construction rather than by reserved range.
 
-TeachingBase, ProjectBase, LiteratureBase, HumanBase, QuestionBase: no blocks/ids reserved yet — each reserves its own via its founding RFC when it mints its first identifier. Rows will be added here as that happens.
+**QuestionBase** (`oe:Question`) — per RFC-0003 (accepted 2026-08-16): `OE-QUESTION-<slug>`, no
+numeric block, no vocab-slug segment (same reasoning as TheoryBase/MethodsBase above — one corpus,
+no multi-vocabulary structure). 38 records.
+
+TeachingBase, ProjectBase, LiteratureBase, HumanBase: no blocks/ids reserved yet, and no founding
+RFC drafted — each needs one before minting a permanent id. Rows will be added here as that happens.
 
 *\*Note: `oe:Competency` instances currently live in ConceptBase (see table above); whether CompetencyBase's planned migration (base-graph-project plan §3.1) relocates existing blocks or only governs new ones is a decision for that migration's own RFC, not this document.*
 
