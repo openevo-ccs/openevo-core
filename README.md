@@ -58,7 +58,7 @@ It exists because that infrastructure used to live inside [`conceptbase`](https:
        thin applications that assemble Foundational + Graph entities by id
 ```
 
-Two independently governed reference LPMs currently depend on ConceptBase's own entity types (not on this repo directly): [`bio-core-k12`](https://github.com/openevo-ccs/bio-core-k12) and [`oe-interdisciplinary-k12`](https://github.com/openevo-ccs/oe-interdisciplinary-k12).
+Two independently governed reference LPMs currently depend on ConceptBase's own entity types (not on this repo directly): [`bio-core-k12`](https://github.com/openevo-ccs/bio-core-k12) and [`interdisciplinary-k12`](https://github.com/openevo-ccs/interdisciplinary-k12).
 
 ## What's in scope (and what isn't)
 

@@ -87,7 +87,7 @@ block-allocation.
 | `BIO-CORE` (Concept) | `OE-CONCEPT-000100`–`000199` | See `conceptbase/GOVERNANCE.md` for current usage |
 | `OE-INTERDISCIPLINARY` (Concept) | `OE-CONCEPT-000200`–`000299`, plus `000090`–`000099` cross-cutting | See `conceptbase/GOVERNANCE.md` |
 | `bio-core-k12` (Strand) | `OE-STRAND-000100`–`000199` | Per-LPM block |
-| `oe-interdisciplinary-k12` (Strand) | `OE-STRAND-000200`–`000299` | Per-LPM block |
+| `interdisciplinary-k12` (Strand) | `OE-STRAND-000200`–`000299` | Per-LPM block |
 | `OE-LPM` | Sequential | No sub-blocking — LPMs don't nest |
 | `NGSS-LIFE-SCIENCE` (Competency) | `OE-COMPETENCY-000100`–`000199` | |
 | `AI4K12` (Competency) | `OE-COMPETENCY-000200`–`000699` | Wider block, reserved up front per RFC-0007 |
