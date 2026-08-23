@@ -37,7 +37,7 @@
 # ============================================================================
 
 id: OE-ONTOLOGY
-version: 1.5.0
+version: 1.6.0
 status: stable
 authors:
   - name: OpenEvo Ecosystem Kernel Stewards (see GOVERNANCE.md)
@@ -151,6 +151,299 @@ classes:
       mapping table.
 
 # ----------------------------------------------------------------------------
+# CLASSES (TheoryBase, QuestionBase, MethodsBase, SpeciesBase)
+# ----------------------------------------------------------------------------
+# Backfilled 2026-08-23 (task-check): all four founding RFCs below were
+# already `accepted` in GOVERNANCE.md's Foundational Repos table, but their
+# classes were never actually added here — none of RFC-0002/0003/0004's own
+# "Files affected" sections named this file (only RFC-0006's did), so the
+# gap sat unnoticed across three prior acceptances. Purely additive
+# (MINOR version bump, see below); instances, schemas, and ids in each
+# owning repo are unchanged — this only mints the kernel-level class
+# mapping, exactly as RFC-0006's own acceptance already did for SpeciesBase.
+# Each entry mirrors oe:Competency's own minimal style: label + one
+# definition paragraph + a pointer to the owning repo's real schema for the
+# full field mapping, not a re-derivation of every field here.
+#
+# Two known naming collisions found while doing this, deliberately NOT
+# resolved by picking a side — flagged in the register instead:
+#   - oe:Evidence: RFC-0002 (TheoryBase, citation-linked empirical support
+#     for a Proposition, 0 records — "reserved, unbuilt") collides with the
+#     oe:Evidence already `reserved` below (xAPI-statement-profiled,
+#     presumably TeachingBase/Assessment territory). Neither side is built;
+#     skipped entirely here rather than minting either meaning under the
+#     contested name.
+#   - oe:Context: RFC-0002 (TheoryBase, "conditions under which a
+#     Proposition is expected to hold," 0 records — "reserved, unbuilt")
+#     collides with RFC-0006's oe:Context (SpeciesBase, an ecological/
+#     social/developmental context a FeatureExpression holds under, 3 real
+#     records). SpeciesBase's sense is added below since it already has
+#     real content; TheoryBase's will need a different class name
+#     (e.g. oe:TheoreticalContext) whenever it's actually built.
+
+  oe:Theory:
+    label: Theory
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A coherent explanatory framework, decomposable into Propositions and
+      Assumptions, attributable to a person or group. Instances are owned
+      by TheoryBase; see openevo-core/proposals/0002-theorybase-founding-
+      ontology.md and theorybase/schema/theory-record.schema.json for the
+      full field mapping.
+
+  oe:Proposition:
+    label: Proposition
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      An individual claim within a Theory, with an evidence-quality note.
+      Instances are owned by TheoryBase; see openevo-core/proposals/0002-
+      theorybase-founding-ontology.md and theorybase/schema/proposition-
+      record.schema.json for the full field mapping.
+
+  oe:Assumption:
+    label: Assumption
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A foundational premise within a Theory, not itself empirically
+      tested. Instances are owned by TheoryBase; see openevo-core/
+      proposals/0002-theorybase-founding-ontology.md for the full field
+      mapping.
+
+  oe:CompetingProposition:
+    label: Competing Proposition
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      An explicitly modeled alternative claim contesting another
+      Proposition on the same question. Instances are owned by TheoryBase;
+      see openevo-core/proposals/0002-theorybase-founding-ontology.md for
+      the full field mapping.
+
+  oe:Misconception:
+    label: Misconception
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A documented, empirically-observed incorrect student belief pattern
+      — a student cognitive artifact, not a scholarly claim, so it does
+      not reduce to CompetingProposition. Instances are owned by
+      TheoryBase; see openevo-core/proposals/0002-theorybase-founding-
+      ontology.md and theorybase/schema/misconception-record.schema.json
+      for the full field mapping.
+
+  oe:CrossDomainConstruct:
+    label: Cross-Domain Construct
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A construct treated as domain-general, spanning e.g. biological,
+      cultural, or computational instantiations. Instances are owned by
+      TheoryBase; see openevo-core/proposals/0002-theorybase-founding-
+      ontology.md and theorybase/schema/cross-domain-construct-record.
+      schema.json for the full field mapping.
+
+  oe:Mechanism:
+    label: Mechanism
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A directed causal link between two constructs, carrying strength/
+      evidence and a mandatory power-mediation note (who/what the
+      mechanism's effect depends on, and how it may vary across
+      populations/contexts). Instances are owned by TheoryBase; see
+      openevo-core/proposals/0002-theorybase-founding-ontology.md for the
+      full field mapping.
+
+  oe:Hypothesis:
+    label: Hypothesis
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A directly testable, falsifiable claim spanning one or more
+      constructs, with a structured evidence assessment. Instances are
+      owned by TheoryBase; see openevo-core/proposals/0002-theorybase-
+      founding-ontology.md for the full field mapping.
+
+  oe:DesignPrinciple:
+    label: Design Principle
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A normative curricular recommendation derived from one or more
+      Theories — the missing link between what a theory claims and what a
+      curriculum does. Instances are owned by TheoryBase; see openevo-core/
+      proposals/0002-theorybase-founding-ontology.md and theorybase/
+      schema/design-principle-record.schema.json for the full field
+      mapping.
+
+  oe:CurriculumDecision:
+    label: Curriculum Decision
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A concrete design choice, justified by a DesignPrinciple and grounded
+      in a Theory, instantiated in a real ConceptBase Strand. Instances are
+      owned by TheoryBase; see openevo-core/proposals/0002-theorybase-
+      founding-ontology.md and theorybase/schema/curriculum-decision-
+      record.schema.json for the full field mapping.
+
+  oe:LearningDependency:
+    label: Learning Dependency
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A theory-relative prerequisite/reinforcement claim among concepts —
+      different Theories can imply different dependency graphs for the
+      same concepts. Instances are owned by TheoryBase; see openevo-core/
+      proposals/0002-theorybase-founding-ontology.md and theorybase/
+      schema/learning-dependency-record.schema.json for the full field
+      mapping.
+
+  oe:Question:
+    label: Question
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A representation of uncertainty itself — what experts do not yet
+      know or actively disagree about — distinct from Theory's job of
+      capturing what experts currently believe. Carries a questionType
+      (empirical | design | theoretical | methodological | policy |
+      implementation) and a seven-stage inquiry lifecycle. Instances are
+      owned by QuestionBase; see openevo-core/proposals/0003-questionbase-
+      founding-ontology.md and questionbase/schema/question-record.
+      schema.json for the full field mapping.
+
+  oe:Method:
+    label: Method
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A research or pedagogical method, classed by a methodClass enum
+      (pedagogical-practice | research-method) rather than split into
+      separate classes — this resolves the ontology plan's original Open
+      Decision 4 and retires oe:Practice (see the reserved block below;
+      any content that would have used oe:Practice uses methodClass:
+      pedagogical-practice here instead). Decomposable into ordered
+      phases that can cycle back on themselves, with an explicit pointer
+      to where it's actually implemented as running software. Instances
+      are owned by MethodsBase; see openevo-core/proposals/0004-
+      methodsbase-founding-ontology.md and methodsbase/schema/method-
+      record.schema.json for the full field mapping.
+
+  oe:Taxon:
+    label: Taxon
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A stable, authority-independent handle for a lineage — carries no
+      scientific name or rank of its own, those live on its linked
+      TaxonomicConcept(s). Instances are owned by SpeciesBase; see
+      openevo-core/proposals/0006-speciesbase-founding-ontology.md and
+      SpeciesBase/ontology/core_v1.yaml (sb:Taxon) for the full field
+      mapping.
+
+  oe:TaxonomicConcept:
+    label: Taxonomic Concept
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      One biodiversity authority's circumscription (rank, parent, external
+      record) of a Taxon; Phase 1 populates exactly one (GBIF-anchored)
+      per Taxon. Instances are owned by SpeciesBase; see openevo-core/
+      proposals/0006-speciesbase-founding-ontology.md and SpeciesBase/
+      ontology/core_v1.yaml (sb:TaxonomicConcept) for the full field
+      mapping.
+
+  oe:LexicalForm:
+    label: Lexical Form
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      Either a scientific or vernacular name for a Taxon, distinguished by
+      a term_type discriminator rather than split into two classes.
+      Instances are owned by SpeciesBase; see openevo-core/proposals/0006-
+      speciesbase-founding-ontology.md and SpeciesBase/ontology/
+      core_v1.yaml (sb:LexicalForm) for the full field mapping.
+
+  oe:CulturalCategory:
+    label: Cultural / Educational Category
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A culturally or educationally meaningful category ("fish,"
+      "Säugetier") mapped to one or more TaxonomicConcepts via an
+      explicit, non-identity relation type. Instances are owned by
+      SpeciesBase; see openevo-core/proposals/0006-speciesbase-founding-
+      ontology.md and SpeciesBase/ontology/core_v1.yaml
+      (sb:CulturalCategory) for the full field mapping.
+
+  oe:Language:
+    label: Language
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A lightweight controlled-vocabulary entry backing LexicalForm's
+      language tagging — not a full linguistic ontology. Instances are
+      owned by SpeciesBase; see openevo-core/proposals/0006-speciesbase-
+      founding-ontology.md and SpeciesBase/ontology/core_v1.yaml
+      (sb:Language) for the full field mapping.
+
+  oe:Feature:
+    label: Feature
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      An abstract characteristic, process, capacity, or behavioral
+      pattern; bilingual (EN/DE) by construction, grounded in eva_buch's
+      curated concept table. Instances are owned by SpeciesBase; see
+      openevo-core/proposals/0006-speciesbase-founding-ontology.md and
+      SpeciesBase/ontology/core_v1.yaml (sb:Feature) for the full field
+      mapping.
+
+  oe:FeatureExpression:
+    label: Feature Expression
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A concrete manifestation of a Feature in a specific Taxon, holding
+      an optional array of Explanation references. Instances are owned by
+      SpeciesBase; see openevo-core/proposals/0006-speciesbase-founding-
+      ontology.md and SpeciesBase/ontology/core_v1.yaml
+      (sb:FeatureExpression) for the full field mapping.
+
+  oe:Context:
+    label: Context
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A named, reusable ecological/social/developmental/population
+      context a FeatureExpression holds under, promoted to a full class
+      so the same Context can be referenced from multiple
+      FeatureExpressions across different taxa. Instances are owned by
+      SpeciesBase; see openevo-core/proposals/0006-speciesbase-founding-
+      ontology.md and SpeciesBase/ontology/core_v1.yaml (sb:Context) for
+      the full field mapping. (TheoryBase's RFC-0002 also names an
+      unbuilt "oe:Context" for a different purpose — see this section's
+      header note; that sense is not represented here.)
+
+  oe:Explanation:
+    label: Explanation
+    status: accepted
+    subClassOf: oe:Entity
+    definition: >
+      A single claim answering one of the seven canonical Tinbergen-family
+      questions about one FeatureExpression. Promoted to a full,
+      independently addressable Entity (not an inline struct) so
+      competing accounts of the same claim can exist as sibling instances
+      rather than one field silently picking a winner. Instances are
+      owned by SpeciesBase; see openevo-core/proposals/0006-speciesbase-
+      founding-ontology.md and SpeciesBase/ontology/core_v1.yaml
+      (sb:Explanation) for the full field mapping.
+
+# ----------------------------------------------------------------------------
 # CLASSES (Reserved — IRI stable, structure not yet defined)
 # ----------------------------------------------------------------------------
 # Declaring these now means dependent repositories can forward-reference
@@ -169,15 +462,15 @@ reserved:
   - iri: oe:Assessment
     plannedPhase: 4
     plannedOwner: TeachingBase
-  - iri: oe:Practice
-    plannedPhase: 4
-    note: >
-      Slated for retirement in favor of oe:Method (MethodsBase) per the
-      base-graph-project architecture plan §3.3 — kept declared here,
-      unpromoted, until that RFC lands.
   - iri: oe:Evidence
     plannedPhase: 4
-    note: To be profiled as an extension of xAPI statement structure.
+    note: >
+      To be profiled as an extension of xAPI statement structure.
+      Naming collision found 2026-08-23: RFC-0002 (TheoryBase) also
+      proposes an unbuilt "oe:Evidence" (citation-linked empirical
+      support for a Proposition) under this same name. Neither side has
+      real records yet — resolve which owns the name (or rename one)
+      before either is actually built.
   - iri: oe:Resource
     plannedPhase: 4
     plannedOwner: TeachingBase
