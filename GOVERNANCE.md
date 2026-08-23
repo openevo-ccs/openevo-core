@@ -23,7 +23,7 @@ This document exists because `conceptbase` — the ecosystem's first mature repo
 | Role | Responsibility | Who holds it today |
 |---|---|---|
 | **Kernel steward** | Merge rights on this repo; final arbitration on upper-ontology changes, identifier-scheme changes, and namespace-root changes. | Dustin Eirdosh |
-| **Foundational Repo delegate** (one seat per base: Concept, Competency, Teaching, Project, Literature, Human, Theory, Question, Method) | Reviews any kernel RFC that would affect their Foundational Repo's entity type — e.g. a new `oe:` class their repo will instantiate, or a block-allocation change. | Dustin Eirdosh (all nine seats today — see note below) |
+| **Foundational Repo delegate** (one seat per base: Concept, Competency, Teaching, Project, Literature, Human, Theory, Question, Method, Species) | Reviews any kernel RFC that would affect their Foundational Repo's entity type — e.g. a new `oe:` class their repo will instantiate, or a block-allocation change. | Dustin Eirdosh (all ten seats today — see note below) |
 | **Project-repo representative** | Non-voting review on kernel RFCs that would change what Project repos (any kind — `graph`/`lpm`/`app`) can reference. Distinct from the ProjectBase Foundational-Repo-delegate seat above, which is about the `oe:Project` entity type specifically. | Dustin Eirdosh |
 | **Contributors** | Anyone; submit RFCs via pull request against `proposals/`. | — |
 
@@ -115,6 +115,15 @@ Foundational Repos founded via a from-scratch RFC rather than reviewing an exist
 `OE-LITERATURE-<slug>`, no numeric block, no vocab-slug segment. Deliberately not DOI-derived even
 though most records have one — see RFC-0005's own ID block reservation section for why. 119
 records.
+
+**SpeciesBase** (`oe:Taxon`, `oe:TaxonomicConcept`, `oe:LexicalForm`, `oe:CulturalCategory`,
+`oe:Language`, `oe:Feature`, `oe:FeatureExpression`, `oe:Context`, `oe:Explanation`) — per RFC-0006
+(accepted 2026-08-23), the 10th Foundational Repo: `{type}:{slug}` (abbreviated prefixes —
+`taxon:`, `taxconcept:`, `name:`, `cultcat:`, `lang:`, `feature:`, `featexpr:`, `context:`,
+`explanation:` — rather than the `oe:{TYPE}` uppercase form other repos favor, chosen before this
+RFC and already in production use). No numeric block needed; the migration off the original
+`SB-{TYPE}-######` scheme was already complete (2026-08-19) before this RFC was drafted. ~150
+records across all nine classes.
 
 TeachingBase, ProjectBase, HumanBase: no blocks/ids reserved yet, and no founding RFC drafted —
 each needs one before minting a permanent id. Rows will be added here as that happens.

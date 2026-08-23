@@ -2,7 +2,7 @@
 
 **Type:** `content`
 
-**Status:** `proposed`
+**Status:** `accepted` (2026-08-23 — see Review below)
 **Author(s):** Claude, for Dustin Eirdosh
 **Date:** 2026-08-22
 
@@ -135,6 +135,16 @@ No re-encoding is proposed or needed; this RFC does not touch any existing id.
 
 ## Review
 
-- [ ] Foundational Repo delegate approval (SpeciesBase seat — Dustin)
-- [ ] Kernel Steward approval (Dustin)
-- [ ] For `specification-amendment` RFCs: N/A — this is `content`, not `specification-amendment`
+- [x] Foundational Repo delegate approval (SpeciesBase seat — Dustin) — 2026-08-23, live session (`task-check`)
+- [x] Kernel Steward approval (Dustin) — 2026-08-23, live session (`task-check`)
+- [x] For `specification-amendment` RFCs: N/A — this is `content`, not `specification-amendment`
+
+**Acceptance note (2026-08-23):** the id migration this RFC's own §"ID block reservation" already
+confirmed complete (2026-08-19, before this RFC) needed no further action. `GOVERNANCE.md`'s
+Foundational Repos table now carries SpeciesBase's entry. Adding the 9 `oe:` classes themselves to
+`openevo-core/ontologies/core_v1.yaml` is **deliberately not done as part of this acceptance** — a
+live check found that `core_v1.yaml` doesn't yet carry the class families for three *other* already-
+accepted RFCs either (RFC-0002 TheoryBase, RFC-0003 QuestionBase, RFC-0004 MethodsBase all say
+"accepted" in `GOVERNANCE.md` but none of their classes appear in `classes:` or `reserved:` in the
+actual ontology file). Adding SpeciesBase's alone would paper over a pattern affecting four RFCs at
+once rather than surface it. Flagged as its own follow-up, not silently folded in here.
