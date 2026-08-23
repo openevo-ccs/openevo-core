@@ -104,7 +104,7 @@ block-allocation.
 |---|---|---|
 | `OPENEVO-DBR-MODEL` (Method) | `OE-METHOD-<slug>` | RFC-0004. 9 records (the DBR Model + its 4 phases, the Multi-Agent Deliberation Protocol, the EvoFlex assessment pattern, Kattmann's didactic-reduction model, one `proposed` curriculum-network-analysis method). Id scheme migrated 2026-08-16 from numeric block-allocation to `OE-METHOD-<slug>` (reusing each record's own `slug` field), same pattern as TheoryBase below. |
 
-**TheoryBase** (`oe:Theory`, `oe:Proposition`, `oe:Assumption`, `oe:Evidence`, `oe:Context`, `oe:CompetingProposition`, `oe:Misconception`, `oe:CrossDomainConstruct`, `oe:Mechanism`, `oe:Hypothesis`, `oe:DesignPrinciple`, `oe:CurriculumDecision`, `oe:LearningDependency`) — per RFC-0002 (accepted 2026-08-16): `OE-{TYPE}-<slug>`, no numeric block, no vocab-slug segment (no analogous multi-vocabulary structure exists yet — see RFC-0002's own ID block reservation section for why). Each type is its own namespace, collision-free by construction rather than by reserved range.
+**TheoryBase** (`oe:Theory`, `oe:Proposition`, `oe:Assumption`, `oe:ResearchEvidence`, `oe:TheoreticalContext`, `oe:CompetingProposition`, `oe:Misconception`, `oe:CrossDomainConstruct`, `oe:Mechanism`, `oe:Hypothesis`, `oe:DesignPrinciple`, `oe:CurriculumDecision`, `oe:LearningDependency`) — per RFC-0002 (accepted 2026-08-16; `oe:Evidence`/`oe:Context` renamed to `oe:ResearchEvidence`/`oe:TheoreticalContext` 2026-08-23 to resolve naming collisions found while backfilling `ontologies/core_v1.yaml` — see that file's own comments): `OE-{TYPE}-<slug>`, no numeric block, no vocab-slug segment (no analogous multi-vocabulary structure exists yet — see RFC-0002's own ID block reservation section for why). Each type is its own namespace, collision-free by construction rather than by reserved range.
 
 **QuestionBase** (`oe:Question`) — per RFC-0003 (accepted 2026-08-16): `OE-QUESTION-<slug>`, no
 numeric block, no vocab-slug segment (same reasoning as TheoryBase/MethodsBase above — one corpus,
@@ -117,8 +117,10 @@ though most records have one — see RFC-0005's own ID block reservation section
 records.
 
 **SpeciesBase** (`oe:Taxon`, `oe:TaxonomicConcept`, `oe:LexicalForm`, `oe:CulturalCategory`,
-`oe:Language`, `oe:Feature`, `oe:FeatureExpression`, `oe:Context`, `oe:Explanation`) — per RFC-0006
-(accepted 2026-08-23), the 10th Foundational Repo: `{type}:{slug}` (abbreviated prefixes —
+`oe:Language`, `oe:Feature`, `oe:FeatureExpression`, `oe:EcologicalContext`, `oe:Explanation`) — per
+RFC-0006 (accepted 2026-08-23; `oe:Context` renamed to `oe:EcologicalContext` 2026-08-23 to resolve
+a naming collision with TheoryBase's own sense, now a sibling subclass under a shared abstract
+`oe:Context` — see `ontologies/core_v1.yaml`'s own comments), the 10th Foundational Repo: `{type}:{slug}` (abbreviated prefixes —
 `taxon:`, `taxconcept:`, `name:`, `cultcat:`, `lang:`, `feature:`, `featexpr:`, `context:`,
 `explanation:` — rather than the `oe:{TYPE}` uppercase form other repos favor, chosen before this
 RFC and already in production use). No numeric block needed; the migration off the original

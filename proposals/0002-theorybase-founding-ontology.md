@@ -99,3 +99,14 @@ execution gap this RFC deliberately doesn't repeat.
 - [x] Foundational Repo delegate approval (TheoryBase seat — Dustin) — 2026-08-16
 - [x] Kernel Steward approval (Dustin) — 2026-08-16
 - [x] For `specification-amendment` RFCs: N/A — this is `content`, not `specification-amendment`
+
+**Amendment, 2026-08-23 (Dustin, live session):** while backfilling `openevo-core/ontologies/
+core_v1.yaml` with this RFC's classes (never actually added despite acceptance — see that file's
+own header comment), two of this RFC's proposed class names collided with names claimed elsewhere:
+`oe:Evidence` collided with a pre-existing `reserved` entry (xAPI-profiled, likely TeachingBase's),
+and `oe:Context` collided with RFC-0006's SpeciesBase sense (which already has 3 real records).
+Both were unbuilt here (0 records each). Renamed in `core_v1.yaml` to `oe:ResearchEvidence` and
+`oe:TheoreticalContext` (the latter now a subclass of a shared abstract `oe:Context`) — no schema
+or record content in this repo exists yet under either old name, so nothing to migrate. This
+document's own tables above still show the original names for historical accuracy; the live names
+are `oe:ResearchEvidence`/`oe:TheoreticalContext`.

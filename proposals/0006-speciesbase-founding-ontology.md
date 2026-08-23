@@ -148,3 +148,10 @@ accepted RFCs either (RFC-0002 TheoryBase, RFC-0003 QuestionBase, RFC-0004 Metho
 "accepted" in `GOVERNANCE.md` but none of their classes appear in `classes:` or `reserved:` in the
 actual ontology file). Adding SpeciesBase's alone would paper over a pattern affecting four RFCs at
 once rather than surface it. Flagged as its own follow-up, not silently folded in here.
+
+**Amendment, 2026-08-23 (Dustin, live session), same day:** the follow-up backfill above found this
+RFC's proposed `oe:Context` collided with RFC-0002's (TheoryBase) own unbuilt `oe:Context`. Since
+this repo already has 3 real records under that concept, it kept the plain sense but the class was
+renamed to `oe:EcologicalContext` and made a subclass of a new shared abstract `oe:Context` (parent
+to both this and TheoryBase's `oe:TheoreticalContext`). No change to SpeciesBase's own `sb:Context`
+id, schema, or records — only the kernel-level `oe:` mapping name changed.
