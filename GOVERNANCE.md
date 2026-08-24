@@ -40,6 +40,8 @@ A pull request against `proposals/` is required for:
 
 Everything else — a new Concept, LPM, Strand, Competency, Resource, Project, Literature record, Person, Group, Question, Method, TheoryBase node, or a new vocabulary within an existing class — is **not** proposed here. It goes to the owning Foundational Repo's own `proposals/`, per that repo's own `GOVERNANCE.md`.
 
+**Claiming an RFC number** (added 2026-08-24). Grepping the highest number already in `proposals/` and adding one is a race, not a reservation — three numbers in `conceptbase/proposals/` (0013, 0017, 0018) were independently double-claimed by unrelated branches this way before anyone noticed. Use `lab_manager/scripts/reserve_proposal_number.py --repo <repo> --topic <slug>` instead: it appends a row to that repo's `proposals/RFC_LEDGER.md` and pushes to `origin/main` immediately, so a concurrent claim becomes a rejected push (loud, retryable) rather than two RFC documents silently claiming the same number for days. This is required practice for any RFC filed against this repo or any Foundational Repo's own `proposals/` — not optional convention.
+
 ## Lifecycle Status
 
 Every `oe:` class and property carries a `status` field. Status transitions along the primary chain only move forward:
