@@ -37,7 +37,7 @@
 # ============================================================================
 
 id: OE-ONTOLOGY
-version: 1.6.0
+version: 1.7.0
 status: stable
 authors:
   - name: OpenEvo Ecosystem Kernel Stewards (see GOVERNANCE.md)
@@ -561,6 +561,31 @@ entityProperties:
     range: xsd:string
     status: stable
     definition: Semantic version (MAJOR.MINOR.PATCH) of this entity.
+
+  oe:producedBy:
+    label: produced by
+    domain: oe:Entity
+    range: xsd:string
+    status: accepted
+    definition: >
+      How this entity's content was actually generated: human | llm |
+      human-llm-collaborative. Value space constrained at the schema layer
+      (each owning repo's own schema/*.schema.json), not enumerated here —
+      the same pattern already used for oe:status. human-llm-collaborative
+      names live, human-attended drafting (a session where a person is
+      actively present and steering), distinct from unattended/batch llm
+      generation reviewed only afterward — the real distinction this RFC
+      exists to make nameable, without requiring a separate mandatory
+      field to record who was in the room (see RFC-0008 "Scope narrowed"
+      for why that went further than warranted). Orthogonal to review
+      status (TheoryBase's provenance.review_status, or any owning repo's
+      equivalent): a record can be llm-produced and expert-validated, or
+      human-produced and still author-draft. Also orthogonal to
+      oe:epistemicStatus (RFC-0019, ConceptBase) — that field asks whether
+      an LPM is a designed thought-experiment vs. field-validated
+      curriculum; this field asks who/what drafted the content, at the
+      level of any entity, not just LPMs. Accepted 2026-08-26 (RFC-0008,
+      openevo-core-generation-provenance).
 
 # ----------------------------------------------------------------------------
 # OBJECT PROPERTIES (Phase 1)

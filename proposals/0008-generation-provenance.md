@@ -74,12 +74,14 @@ Not applicable — this RFC mints no new identifiers or classes, only one new pr
 
 | File | Change |
 |---|---|
-| `ontologies/core_v1.yaml` | Add `oe:producedBy` to `entityProperties`. MINOR (1.6.0 → 1.7.0) |
+| `ontologies/core_v1.yaml` | **Done, 2026-08-26.** Added `oe:producedBy` to `entityProperties`. MINOR (1.6.0 → 1.7.0) |
 | `theorybase/schema/*.schema.json` (all 10 record schemas) | **Done, this session.** Extended `provenance.extracted_by`'s enum to add `human-llm-collaborative`; added a description cross-referencing this RFC; added a description to `sourceProvenance` noting it already fulfills the "pointer to generating artifact" role this RFC's earlier draft would have duplicated. Zero new required fields; `scripts/validate.py` confirms 118/118 records still pass. |
 | `lab_manager/docs/design-notes/fair-theory-rigor-and-synthetic-lpm-discourse-strategic-plan.md` | Update Phase C item 6 to point at this RFC once accepted, rather than describing it as still-proposed |
 
 ## Review
 
-**Status:** `proposed`.
+**Status:** `accepted`.
 
-`Not yet accepted.`
+Accepted by Dustin Eirdosh, 2026-08-26. `oe:producedBy` added to `ontologies/core_v1.yaml`'s
+`entityProperties` (1.6.0 → 1.7.0). TheoryBase's schema-side extension was already live prior to
+acceptance (this RFC formalizes the kernel-level property the repo-level change specializes).
