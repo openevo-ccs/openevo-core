@@ -1,8 +1,8 @@
 # OpenEvo Design System — Tokens
 
 Shared CSS design tokens for every public static app across the OpenEvo CCS Lab ecosystem. See
-[`lab_manager`'s authoring-format design note](https://github.com/openevo-ccs/lab_manager/blob/main/docs/design-notes/ecosystem-authoring-format-style-guide-and-wordpress-ingestion-plan.md)
-§4 for the original rationale (that repo is private now, but the doc history stands).
+`lab_manager`'s authoring-format design note (`docs/design-notes/ecosystem-authoring-format-style-guide-and-wordpress-ingestion-plan.md`)
+§4 for the original rationale (that repo is private now, so not publicly linkable, but the doc history stands).
 
 ## Scope
 

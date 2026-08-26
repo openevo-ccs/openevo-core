@@ -138,6 +138,10 @@ h2 { font-size: 1.4rem; border-bottom: 1px solid var(--border); padding-bottom: 
   grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
 }
 
+.repo-name {
+  font-weight: 600;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;

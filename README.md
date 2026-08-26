@@ -16,7 +16,7 @@
 
 **OpenEvo Core** is the connective infrastructure shared by every repository in the OpenEvo CCS Lab: the `oe:` upper ontology, the `OE-{TYPE}-######` identifier scheme, the cross-repo RFC process for proposing new shared ontology classes, and the `www.w3id.org/openevo/` namespace root.
 
-It exists because that infrastructure used to live inside [`conceptbase`](https://github.com/openevo-ccs/conceptbase) — the ecosystem's first mature repo, and still the canonical home for `oe:Concept`/`oe:LPM`/`oe:Strand` instances — simply because ConceptBase was, for a time, the only real repo in the ecosystem. It isn't anymore. Nine **Foundational Repos** now share this kernel co-equally; none of them, ConceptBase included, governs it unilaterally. Full rationale: [`lab_manager`'s design note on this exact question](https://github.com/openevo-ccs/lab_manager/blob/main/docs/design-notes/ecosystem-shared-kernel-and-co-equal-governance-plan.md).
+It exists because that infrastructure used to live inside [`conceptbase`](https://github.com/openevo-ccs/conceptbase) — the ecosystem's first mature repo, and still the canonical home for `oe:Concept`/`oe:LPM`/`oe:Strand` instances — simply because ConceptBase was, for a time, the only real repo in the ecosystem. It isn't anymore. Nine **Foundational Repos** now share this kernel co-equally; none of them, ConceptBase included, governs it unilaterally. Full rationale in `lab_manager`'s design note on this exact question (`docs/design-notes/ecosystem-shared-kernel-and-co-equal-governance-plan.md`) — `lab_manager` is a private repo, not publicly linkable.
 
 > **This repo stores no entity instances.** No Concepts, LPMs, Strands, Competencies, Resources, Projects, Literature records, People, Groups, Questions, Methods, or TheoryBase nodes live here. Every one of those lives in its own owning Foundational Repo, referenced by permanent identifier — never duplicated.
 
@@ -58,7 +58,7 @@ It exists because that infrastructure used to live inside [`conceptbase`](https:
        thin applications that assemble Foundational + Graph entities by id
 ```
 
-Two independently governed reference LPMs currently depend on ConceptBase's own entity types (not on this repo directly): [`bio-core-k12`](https://github.com/openevo-ccs/bio-core-k12) and [`interdisciplinary-k12`](https://github.com/openevo-ccs/interdisciplinary-k12).
+Two independently governed reference LPMs currently depend on ConceptBase's own entity types (not on this repo directly): `bio-core-k12` and `interdisciplinary-k12` — both private repos, not publicly linkable.
 
 ## What's in scope (and what isn't)
 
