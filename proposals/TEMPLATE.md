@@ -11,7 +11,6 @@
   content RFCs.
 -->
 
-**Status:** `proposed`
 **Author(s):**
 **Date:**
 
@@ -41,6 +40,13 @@ List every file this RFC will change once merged, so reviewers can scope the dif
 
 ## Review
 
-- [ ] Foundational Repo delegate approval (required for RFCs touching a specific base's entity type)
-- [ ] Kernel Steward approval
-- [ ] For `specification-amendment` RFCs: explicit Kernel Steward consensus recorded here (not just a single approving review)
+**Status:** `proposed`. Flip to `accepted` only together with the line below — the two are set as one
+edit, not two, so they can't silently drift out of sync the way a separate status field could (see
+`lab_manager/docs/design-notes/rfc-governance-proportionality-review-and-lightweight-proposal.md` for
+why this replaced the prior two-role delegate/Kernel-Steward checklist).
+
+`Not yet accepted.`
+<!-- Once accepted, replace the line above with exactly one line:
+     Accepted — <name>, <date>, <session/context>.
+     For `specification-amendment` RFCs only, also note explicit consensus here (not just a single
+     approving line) — that's still a real, higher bar than an ordinary content RFC. -->
