@@ -44,7 +44,7 @@ Eight classes, all under `www.w3id.org/openevo/ontology#`, `plannedOwner: theory
 
 ## Relations
 
-`oe:Theory.heldBy` → HumanBase `oe:Person`/`oe:Group`. `oe:Evidence.citation` → LiteratureBase `oe:Literature`. All eight classes are referenced, never duplicated, by `openevo-graph`'s dispute-synthesis layer (`openevo-graph/schema/dispute-graph-v1.schema.json`, itself needing no OECB RFC per Addendum III §6) — TheoryBase stays atomic and single-owner per class instance; the graph repo carries cross-entity relational content (`divergesFrom`, `critiques`, etc.).
+`oe:Theory.heldBy` → HumanBase `oe:Person`/`oe:Group`. `oe:Evidence.citation` → LiteratureBase `oe:Literature`. All eight classes are referenced, never duplicated, by `openevo-graph`'s dispute-synthesis layer (`openevo-graph/schema/dispute-graph-v1.schema.json`, itself needing no ConceptBase RFC per Addendum III §6) — TheoryBase stays atomic and single-owner per class instance; the graph repo carries cross-entity relational content (`divergesFrom`, `critiques`, etc.).
 
 ## Standards justification
 

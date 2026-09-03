@@ -50,7 +50,7 @@ One class: `oe:Method`, `plannedOwner: methodsbase`.
 | `partOfMethod` | Back-reference from a child method to its container — the inverse of `decomposesInto`, needed because a phase method is independently citable (its own `implementedBy`, its own `primarySources`), not an inline sub-object. |
 | `cyclesTo` | **New relative to the QuestionBase pattern.** Optional single `method:` id. A plain tree can't express that a cyclic method's last phase feeds back into its first (the DBR Model's "dissemination & infrastructuring" stage closing back to "context analysis" for the next cycle) — this field makes that closure explicit and machine-readable rather than only stated in prose. |
 | `relatedQuestions` | Array of `question:` ids — only populated where a real QuestionBase record exists |
-| `implementedBy` | Array of `{type: agent\|skill\|tool\|repo, name, repo, note?}` objects pointing at where this method is actually operationalized today. Not a governed cross-repo id (agents/skills/tools aren't OECB entities) — a descriptive pointer, the field that makes this repo integrated rather than a standalone taxonomy. |
+| `implementedBy` | Array of `{type: agent\|skill\|tool\|repo, name, repo, note?}` objects pointing at where this method is actually operationalized today. Not a governed cross-repo id (agents/skills/tools aren't ConceptBase entities) — a descriptive pointer, the field that makes this repo integrated rather than a standalone taxonomy. |
 | `primarySources` | Same shape as QuestionBase's `primarySources` (`citation`/`doi`/`literatureRef`), plus one addition: optional `url`, since several real sources here (the DBR model's own web page, `curriculum-evolution`'s methods docs) are institutional web resources without a DOI. |
 
 ## Relations
@@ -58,7 +58,7 @@ One class: `oe:Method`, `plannedOwner: methodsbase`.
 `decomposesInto`/`partOfMethod`/`cyclesTo` → other MethodsBase records (ordinary same-repo
 relations). `relatedQuestions` → QuestionBase. `implementedBy` → descriptive pointers into
 `curriculum-agents` (agents, skills, tools) and other repos; not a governed reference, since the
-targets aren't OECB entities.
+targets aren't ConceptBase entities.
 
 ## Standards justification
 
