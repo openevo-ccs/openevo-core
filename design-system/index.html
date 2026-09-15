@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpenEvo Design Tokens</title>
+  <meta name="description" content="Live reference for the shared CSS design tokens every OpenEvo CCS Lab app builds on: color, type, space, radius, elevation, motion, and the chart palette." />
+  <link rel="icon" href="brand/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="preview.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brandmark">
+        <img src="brand/favicon.svg" alt="" />
+        <div>
+          <p class="eyebrow">OpenEvo CCS Lab</p>
+          <h1>Design Tokens</h1>
+        </div>
+      </div>
+      <div class="top-links">
+        <a href="README.md">README</a>
+        <a href="https://github.com/openevo-ccs/openevo-core/blob/main/design-system">Source</a>
+        <button id="theme-toggle" type="button">Theme: System</button>
+      </div>
+    </header>
+
+    <section class="block">
+      <h2>Brand &amp; interactive</h2>
+      <p class="desc">The ecosystem's UI accent, for links, primary actions, and focus states. Deliberately distinct from every chart series color so an accent never reads as a data mark.</p>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="fill" style="background:var(--brand)"></div><div class="label">brand<code>--brand</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--brand-hover)"></div><div class="label">brand-hover<code>--brand-hover</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--brand-soft)"></div><div class="label">brand-soft<code>--brand-soft</code></div></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Surfaces, text &amp; borders</h2>
+      <p class="desc">Warm neutral grays. Original tokens — unchanged since first publication.</p>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="fill" style="background:var(--page-plane)"></div><div class="label">page-plane<code>--page-plane</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--surface-1)"></div><div class="label">surface-1<code>--surface-1</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--surface-2)"></div><div class="label">surface-2<code>--surface-2</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--text-primary)"></div><div class="label">text-primary<code>--text-primary</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--text-secondary)"></div><div class="label">text-secondary<code>--text-secondary</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--text-muted)"></div><div class="label">text-muted<code>--text-muted</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--gridline)"></div><div class="label">gridline<code>--gridline</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--baseline)"></div><div class="label">baseline<code>--baseline</code></div></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Status colors</h2>
+      <p class="desc">Fixed — never themed to the brand, never carried by color alone. Pair with an icon or shape and a text label, always.</p>
+      <div class="status-row"><span class="status-shape good"></span> Good <code>--good</code></div>
+      <div class="status-row"><span class="status-shape warning"></span> Warning <code>--warning</code></div>
+      <div class="status-row"><span class="status-shape serious"></span> Serious <code>--serious</code></div>
+      <div class="status-row"><span class="status-shape critical"></span> Critical <code>--critical</code></div>
+    </section>
+
+    <section class="block">
+      <h2>Categorical chart palette</h2>
+      <p class="desc"><code>--series-a</code> and <code>--series-b</code> are the original two picks (now aliases of slots 1 and 6 below) and stay put for conceptbase/app's existing chart. New multi-series work should draw from <code>--chart-1</code>–<code>--chart-8</code> in order — and re-run the dataviz skill's <code>validate_palette.js</code> for the series count actually shipped.</p>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="fill" style="background:var(--chart-1)"></div><div class="label">chart-1 · blue<code>--chart-1 (= --series-a)</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--chart-2)"></div><div class="label">chart-2 · orange<code>--chart-2</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--chart-3)"></div><div class="label">chart-3 · aqua<code>--chart-3</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--chart-4)"></div><div class="label">chart-4 · yellow<code>--chart-4</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--chart-5)"></div><div class="label">chart-5 · magenta<code>--chart-5</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--chart-6)"></div><div class="label">chart-6 · green<code>--chart-6 (= --series-b)</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--chart-7)"></div><div class="label">chart-7 · violet<code>--chart-7</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--chart-8)"></div><div class="label">chart-8 · red<code>--chart-8</code></div></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Sequential &amp; diverging</h2>
+      <p class="desc">Magnitude (one hue, light→dark) and polarity (two poles + a neutral midpoint). Mode-invariant, like the source reference palette.</p>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="fill" style="background:var(--sequential-1)"></div><div class="label">sequential-1<code>--sequential-1</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--sequential-2)"></div><div class="label">sequential-2<code>--sequential-2</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--sequential-3)"></div><div class="label">sequential-3<code>--sequential-3</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--sequential-4)"></div><div class="label">sequential-4<code>--sequential-4</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--sequential-5)"></div><div class="label">sequential-5<code>--sequential-5</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--diverging-cool)"></div><div class="label">diverging-cool<code>--diverging-cool</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--diverging-mid)"></div><div class="label">diverging-mid<code>--diverging-mid</code></div></div>
+        <div class="swatch"><div class="fill" style="background:var(--diverging-warm)"></div><div class="label">diverging-warm<code>--diverging-warm</code></div></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Typography</h2>
+      <p class="desc"><code>--font</code> (sans, body text) is original and unchanged. <code>--font-mono</code> and the type scale are new.</p>
+      <div class="type-sample"><code>--text-4xl</code><span style="font-size:var(--text-4xl); font-weight:var(--weight-semibold);">OpenEvo</span></div>
+      <div class="type-sample"><code>--text-3xl</code><span style="font-size:var(--text-3xl); font-weight:var(--weight-semibold);">OpenEvo</span></div>
+      <div class="type-sample"><code>--text-2xl</code><span style="font-size:var(--text-2xl); font-weight:var(--weight-semibold);">OpenEvo</span></div>
+      <div class="type-sample"><code>--text-xl</code><span style="font-size:var(--text-xl);">OpenEvo</span></div>
+      <div class="type-sample"><code>--text-lg</code><span style="font-size:var(--text-lg);">OpenEvo</span></div>
+      <div class="type-sample"><code>--text-base</code><span style="font-size:var(--text-base);">OpenEvo</span></div>
+      <div class="type-sample"><code>--text-sm</code><span style="font-size:var(--text-sm);">OpenEvo</span></div>
+      <div class="type-sample"><code>--text-xs</code><span style="font-size:var(--text-xs);">OpenEvo</span></div>
+      <div class="type-sample"><code>--font-mono</code><span style="font-family:var(--font-mono); font-size:var(--text-sm);">OE-CONCEPT-000001</span></div>
+    </section>
+
+    <section class="block">
+      <h2>Spacing scale</h2>
+      <div class="space-row"><code>--space-1</code><div class="space-bar" style="width:var(--space-1)"></div></div>
+      <div class="space-row"><code>--space-2</code><div class="space-bar" style="width:var(--space-2)"></div></div>
+      <div class="space-row"><code>--space-3</code><div class="space-bar" style="width:var(--space-3)"></div></div>
+      <div class="space-row"><code>--space-4</code><div class="space-bar" style="width:var(--space-4)"></div></div>
+      <div class="space-row"><code>--space-5</code><div class="space-bar" style="width:var(--space-5)"></div></div>
+      <div class="space-row"><code>--space-6</code><div class="space-bar" style="width:var(--space-6)"></div></div>
+      <div class="space-row"><code>--space-7</code><div class="space-bar" style="width:var(--space-7)"></div></div>
+      <div class="space-row"><code>--space-8</code><div class="space-bar" style="width:var(--space-8)"></div></div>
+    </section>
+
+    <section class="block">
+      <h2>Radius</h2>
+      <div class="radius-row">
+        <div class="radius-box" style="border-radius:var(--radius-sm)">radius-sm</div>
+        <div class="radius-box" style="border-radius:var(--radius)">radius</div>
+        <div class="radius-box" style="border-radius:var(--radius-lg)">radius-lg</div>
+        <div class="radius-box" style="border-radius:var(--radius-full)">radius-full</div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Elevation</h2>
+      <div class="elevation-row">
+        <div class="elevation-card" style="box-shadow:var(--shadow-sm)">shadow-sm</div>
+        <div class="elevation-card" style="box-shadow:var(--shadow-md)">shadow-md</div>
+        <div class="elevation-card" style="box-shadow:var(--shadow-lg)">shadow-lg</div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Recipes</h2>
+      <p class="desc">Composed entirely from tokens above — copy the pattern, not a shared stylesheet. <code>tokens.css</code> ships variables only.</p>
+      <div class="recipe-grid">
+        <div class="recipe">
+          <div class="demo">
+            <button class="btn btn-primary" type="button">Primary</button>
+            <button class="btn btn-secondary" type="button">Secondary</button>
+          </div>
+          <pre class="snippet">.btn-primary {
+  background: var(--brand);
+  color: var(--surface-2);
+  border: 1px solid var(--brand);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-4);
+}
+.btn-primary:hover { background: var(--brand-hover); }</pre>
+        </div>
+        <div class="recipe">
+          <div class="demo">
+            <span class="badge">stable</span>
+            <a href="README.md">A link</a>
+          </div>
+          <pre class="snippet">.badge {
+  color: var(--brand);
+  background: var(--brand-soft);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-3);
+}
+a { color: var(--brand); }
+a:hover { color: var(--brand-hover); }</pre>
+        </div>
+        <div class="recipe">
+          <div class="demo" style="display:block;">
+            <p class="callout">A callout uses <code>--surface-1</code> with a <code>--brand</code> rule on its leading edge.</p>
+          </div>
+          <pre class="snippet">.callout {
+  background: var(--surface-1);
+  border-left: 3px solid var(--brand);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: var(--space-3) var(--space-4);
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bottom">
+      <p>Every token here that predates 2026-09-15 keeps its name and value forever — see <a href="README.md">README.md</a> for the compatibility contract and full reference, and <a href="CHANGELOG.md">CHANGELOG.md</a> for what's changed.</p>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var modes = ['system', 'light', 'dark'];
+      var btn = document.getElementById('theme-toggle');
+      function apply(mode) {
+        if (mode === 'system') root.removeAttribute('data-theme');
+        else root.setAttribute('data-theme', mode);
+        btn.textContent = 'Theme: ' + mode.charAt(0).toUpperCase() + mode.slice(1);
+      }
+      var saved = null;
+      try { saved = localStorage.getItem('oe-theme'); } catch (e) {}
+      var mode = modes.indexOf(saved) > -1 ? saved : 'system';
+      apply(mode);
+      btn.addEventListener('click', function () {
+        mode = modes[(modes.indexOf(mode) + 1) % modes.length];
+        apply(mode);
+        try { localStorage.setItem('oe-theme', mode); } catch (e) {}
+      });
+    })();
+  </script>
+</body>
+</html>
