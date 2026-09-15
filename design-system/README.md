@@ -74,6 +74,7 @@ release branch).
 | `--brand-soft` | Tinted background for badges/callouts carrying brand color |
 | `--focus-ring` | `:focus-visible` outline color (currently `var(--brand)`) |
 | `--focus-ring-width` | `:focus-visible` outline width (`2px`) |
+| `--focus-ring-offset` | `:focus-visible` outline offset (`2px`) |
 
 `--brand` is a teal, deliberately not reused from the chart palette below — an app that shows
 both UI chrome and charts on the same screen should never have a link or button read as a data
@@ -84,6 +85,13 @@ series. Use `--brand` for interface color; use `--chart-*`/`--series-*` only for
 | Token | Role |
 |---|---|
 | `--good` / `--warning` / `--serious` / `--critical` | State indicators. Two (`--warning`, `--serious`) sit under 3:1 on the light surface by design — always pair with an icon/shape and a text label, never color alone. |
+
+These four are intentionally **mode-invariant** — same hex in light and dark, matching the
+dataviz skill's own reference palette ("same four steps... clear 3:1 on the dark surface"). Verified
+against `--surface-1`: `--good` 3.27:1 light / 5.19:1 dark, `--warning` 1.79:1 / 9.49:1, `--serious`
+2.57:1 / 6.60:1, `--critical` 4.68:1 / 3.62:1 — every value clears the 3:1 non-text floor in dark
+mode even where it doesn't in light mode, so dark theme is not a regression here; the icon+label
+pairing is still required in both.
 
 ### Chart palette (original 2 slots + 6 added 2026-09-15)
 
@@ -111,7 +119,7 @@ validated starting point, not a substitute for that check on your specific chart
 | `--leading-tight` / `--leading-normal` / `--leading-relaxed` | `1.2` / `1.5` / `1.7` |
 | `--weight-regular` / `--weight-medium` / `--weight-semibold` / `--weight-bold` | `400` / `500` / `600` / `700` |
 
-### Spacing, measure, radius, elevation, motion (added 2026-09-15)
+### Spacing, measure, radius, border, elevation, motion (added 2026-09-15)
 
 | Token | Value |
 |---|---|
@@ -119,19 +127,63 @@ validated starting point, not a substitute for that check on your specific chart
 | `--content-width-sm` / `-md` / `-lg` | `42rem` / `52rem` / `64rem` — readable-measure containers |
 | `--radius` / `--radius-sm` | Original: `8px` / `5px` |
 | `--radius-lg` / `--radius-full` | New: `12px` / `999px` (pills, avatars) |
+| `--border-width-accent` | `3px` — the accent-rule width used by e.g. a callout's leading edge |
+| `--tracking-wide` | `0.08em` — letter-spacing for uppercase eyebrow/label text |
 | `--shadow-sm` / `--shadow-md` / `--shadow-lg` | Elevation, themed per light/dark |
 | `--ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` |
-| `--duration-fast` / `--duration-base` / `--duration-slow` | `120ms` / `200ms` / `320ms` — wrap in `@media (prefers-reduced-motion: no-preference)` in your own CSS; these tokens don't do that for you |
+| `--duration-fast` / `--duration-base` / `--duration-slow` | `120ms` / `200ms` / `320ms` |
+
+**Reduced motion.** These duration/easing tokens don't apply `prefers-reduced-motion` for you — wrap
+the `transition` declaration that uses them, not the token definitions:
+
+```css
+@media (prefers-reduced-motion: no-preference) {
+  .my-button { transition: background var(--duration-fast) var(--ease-standard); }
+}
+```
+
+Both stylesheets shipped in this repo (`app/css/styles.css`, `design-system/preview.css`) follow
+this pattern — copy it rather than the bare `transition:` declaration.
 
 ## Brand assets
 
 `brand/favicon.svg` — self-contained (carries its own teal background chip), safe to use as a
 `<link rel="icon">` as-is regardless of browser chrome. `brand/mark.svg` — the same glyph in
 `currentColor` with no background, for inline use directly against a page (nav bars, this
-showcase's header). Both render the same mark: a single node branching into three, echoing the
-ecosystem's ontology-graph and evolutionary-divergence subject matter (see `oe:Divergence`,
-RFC-0009). Recolor by editing the SVG directly — these are not tokenized (favicons/inline marks
-don't participate in the CSS custom-property cascade the same way).
+showcase's header). Both render the same mark: a single node branching into three, in the spirit
+of the ecosystem's ontology-graph and evolutionary-lineage/phylogenetic-branching subject matter
+in general terms — it is a generic branching glyph, not an illustration of any specific `oe:`
+class (in particular, not `oe:Divergence`/RFC-0009, which models a strictly two-position
+structure and doesn't match this mark's three-way branch).
+
+**Usage guidelines:**
+- Minimum display size: 16px (favicon) / 20px (inline mark) — the glyph reads as a blob below that.
+- Clear space: leave at least half the mark's height as empty margin on every side.
+- Don't recolor `mark.svg` to anything outside `var(--brand)`/`currentColor` (or `favicon.svg`'s
+  chip away from its shipped teal) without re-checking contrast against wherever you place it —
+  see the Accessibility notes above for the method.
+
+Raster derivatives (`apple-touch-icon.png`, manifest icons, an Open Graph preview image, and
+`site.webmanifest`) are also in `brand/` — link them the way `app/index.html` does; see its
+`<head>` for the exact tags.
+
+## Theming behavior
+
+`theme-toggle.js` implements the three-state light/system/dark toggle both `app/index.html` and
+this showcase use, keyed to the `[data-theme]` mechanism in `tokens.css`. Include it plus a
+`<button id="theme-toggle">` and it works with no other wiring:
+
+```html
+<button id="theme-toggle" type="button">Theme: System</button>
+<script src="https://openevo-ccs.github.io/openevo-core/design-system/theme-toggle.js"></script>
+```
+
+**Contract:** it persists the chosen mode (`"system"` | `"light"` | `"dark"`) under the
+localStorage key `oe-theme`. Every app on the same origin (e.g. everything under
+`openevo-ccs.github.io`) shares that key by nature of same-origin storage — a viewer's theme
+choice on one OpenEvo app carries over to the next one they open. That's intentional (it's what
+makes the ecosystem feel like one thing rather than N unrelated sites), so keep the key name and
+its three values unchanged if you fork this script instead of linking it directly.
 
 ## Accessibility notes
 
@@ -139,9 +191,10 @@ don't participate in the CSS custom-property cascade the same way).
   against `--surface-1`/`--surface-2`/`--page-plane` in both themes. `--text-muted` and two of
   the four status colors are intentionally below that floor (axis labels, state icons) — never
   put load-bearing text in those colors alone.
-- `--focus-ring` / `--focus-ring-width` give every consuming app the same visible
-  `:focus-visible` treatment; apps should apply them (`outline: var(--focus-ring-width) solid
-  var(--focus-ring); outline-offset: 2px;`) rather than removing focus outlines.
+- `--focus-ring` / `--focus-ring-width` / `--focus-ring-offset` give every consuming app the same
+  visible `:focus-visible` treatment; apps should apply them (`outline: var(--focus-ring-width)
+  solid var(--focus-ring); outline-offset: var(--focus-ring-offset);`) rather than removing focus
+  outlines.
 - Status and chart colors are never the sole carrier of meaning — pair with an icon/shape and a
   label, per the dataviz skill's own non-negotiables.
 
@@ -149,6 +202,13 @@ don't participate in the CSS custom-property cascade the same way).
 
 - [`conceptbase/app`](https://github.com/openevo-ccs/conceptbase) — ConceptBase Explorer (original source of these tokens)
 - [`app/`](../app) — this repo's own GitHub Pages landing site (adopted 2026-09-15; previously kept an independent, unrelated palette — see `CHANGELOG.md`)
+
+## License
+
+Everything in this directory (tokens, brand assets, the showcase page, this documentation) is
+part of the repo's "landing-site tooling" and licensed under [MIT](../LICENSE-CODE), not the
+ontology content's CC BY-NC-SA 4.0 license — use, copy, and redistribute it like any other MIT
+asset.
 
 ## Provenance
 

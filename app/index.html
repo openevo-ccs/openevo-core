@@ -6,12 +6,22 @@
   <title>OpenEvo Core — Shared Kernel for the OpenEvo CCS Lab</title>
   <meta name="description" content="The shared upper ontology, identifier scheme, and cross-repo governance process underneath every Foundational, Graph, and Project repo in the OpenEvo Computational Curriculum Studies Lab." />
   <link rel="icon" href="design-system/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="design-system/brand/apple-touch-icon.png" />
+  <link rel="manifest" href="design-system/brand/site.webmanifest" />
+  <meta name="theme-color" content="#0f766e" />
+  <meta property="og:title" content="OpenEvo Core" />
+  <meta property="og:description" content="The shared kernel underneath every Foundational, Graph, and Project repo in the OpenEvo Computational Curriculum Studies Lab." />
+  <meta property="og:image" content="https://openevo-ccs.github.io/openevo-core/design-system/brand/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="design-system/tokens.css" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <header class="hero">
-    <div class="brandmark" style="color: var(--brand);">
+    <!-- Inlined (not <img src="design-system/brand/mark.svg">) so `currentColor`
+         picks up --brand from this page's CSS — an <img>-loaded SVG can't see
+         the host page's custom properties. Keep in sync with that file by hand. -->
+    <div class="brandmark">
       <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="OpenEvo">
         <g stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none">
           <path d="M16 26 L16 17" />
@@ -32,7 +42,7 @@
     <p class="tagline">The shared kernel underneath every Foundational, Graph, and Project repo in the OpenEvo Computational Curriculum Studies Lab. Owns no curriculum content of its own.</p>
     <nav class="badges">
       <a href="https://github.com/openevo-ccs/openevo-core">GitHub</a>
-      <a href="GOVERNANCE.html">Governance</a>
+      <a href="https://github.com/openevo-ccs/openevo-core/blob/main/GOVERNANCE.md">Governance</a>
       <a href="https://github.com/openevo-ccs/conceptbase">ConceptBase</a>
       <a href="http://openevo.eva.mpg.de">Research Lab</a>
       <button id="theme-toggle" type="button">Theme: System</button>
@@ -113,26 +123,6 @@
     <p><a href="design-system/">Design tokens</a></p>
   </footer>
 
-  <script>
-    (function () {
-      var root = document.documentElement;
-      var modes = ['system', 'light', 'dark'];
-      var btn = document.getElementById('theme-toggle');
-      function apply(mode) {
-        if (mode === 'system') root.removeAttribute('data-theme');
-        else root.setAttribute('data-theme', mode);
-        btn.textContent = 'Theme: ' + mode.charAt(0).toUpperCase() + mode.slice(1);
-      }
-      var saved = null;
-      try { saved = localStorage.getItem('oe-theme'); } catch (e) {}
-      var mode = modes.indexOf(saved) > -1 ? saved : 'system';
-      apply(mode);
-      btn.addEventListener('click', function () {
-        mode = modes[(modes.indexOf(mode) + 1) % modes.length];
-        apply(mode);
-        try { localStorage.setItem('oe-theme', mode); } catch (e) {}
-      });
-    })();
-  </script>
+  <script src="design-system/theme-toggle.js"></script>
 </body>
 </html>

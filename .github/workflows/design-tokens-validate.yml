@@ -1,0 +1,22 @@
+name: Validate design token compatibility contract
+
+on:
+  pull_request:
+    branches: [main]
+    paths: ["design-system/tokens.css", "scripts/validate_design_tokens.py"]
+  push:
+    branches: [main]
+    paths: ["design-system/tokens.css", "scripts/validate_design_tokens.py"]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate design-system/tokens.css compatibility contract
+        run: python scripts/validate_design_tokens.py

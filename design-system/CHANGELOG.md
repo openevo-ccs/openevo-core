@@ -38,6 +38,30 @@ parallel palette.
 - `app/index.html` and `app/css/styles.css` now link `tokens.css` and consume it instead of
   keeping their own independent palette. `app/` is now a listed consumer in `README.md`.
 
+**Follow-up, same day, after an adversarial review pass:**
+- Added `--border-width-accent`, `--tracking-wide`, `--focus-ring-offset` (three values that were
+  hand-duplicated across `app/css/styles.css`, `preview.css`, and a showcase code sample) as real
+  tokens.
+- `app/css/styles.css` and `preview.css` now wrap their `transition` rules in
+  `@media (prefers-reduced-motion: no-preference)` instead of applying them unconditionally.
+- Extracted the theme-toggle script (previously duplicated inline in two files) into
+  `theme-toggle.js`; documented its `oe-theme` localStorage contract in `README.md`.
+- Fixed a pre-existing broken link in `app/index.html` (`GOVERNANCE.html`, which never existed)
+  to point at the real file on GitHub; pointed the showcase's README/CHANGELOG links at rendered
+  GitHub blob URLs instead of raw Pages-served Markdown.
+- Softened the brand mark's rationale in `README.md` — it's a generic branching glyph, not a
+  literal illustration of `oe:Divergence` (RFC-0009 is a binary structure; the mark is ternary) —
+  and added minimum-size/clear-space/recolor usage guidelines.
+- Added `brand/apple-touch-icon.png`, `brand/icon-192.png`, `brand/icon-512.png`,
+  `brand/og-image.png`, and `brand/site.webmanifest` — the raster assets a real second
+  public-facing app needs immediately and the two SVGs alone didn't cover — wired into both
+  `app/index.html` and `design-system/index.html`.
+- Added a one-line MIT license clarification for this directory in `README.md`.
+- Added `scripts/validate_design_tokens.py` and `.github/workflows/design-tokens-validate.yml`:
+  the compatibility contract above was previously enforced by documentation alone; this pins the
+  exact name/value of all 43 pre-2026-09-15 declarations (across all three theme blocks) and
+  fails CI if any of them is renamed, removed, or re-valued.
+
 **Unchanged:** every token present before this entry — name and value both.
 
 ## 2026-07-28 and earlier

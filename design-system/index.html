@@ -6,6 +6,13 @@
   <title>OpenEvo Design Tokens</title>
   <meta name="description" content="Live reference for the shared CSS design tokens every OpenEvo CCS Lab app builds on: color, type, space, radius, elevation, motion, and the chart palette." />
   <link rel="icon" href="brand/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="brand/apple-touch-icon.png" />
+  <link rel="manifest" href="brand/site.webmanifest" />
+  <meta name="theme-color" content="#0f766e" />
+  <meta property="og:title" content="OpenEvo Design Tokens" />
+  <meta property="og:description" content="Live reference for the shared CSS design tokens every OpenEvo CCS Lab app builds on." />
+  <meta property="og:image" content="https://openevo-ccs.github.io/openevo-core/design-system/brand/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="preview.css" />
 </head>
@@ -20,7 +27,7 @@
         </div>
       </div>
       <div class="top-links">
-        <a href="README.md">README</a>
+        <a href="https://github.com/openevo-ccs/openevo-core/blob/main/design-system/README.md">README</a>
         <a href="https://github.com/openevo-ccs/openevo-core/blob/main/design-system">Source</a>
         <button id="theme-toggle" type="button">Theme: System</button>
       </div>
@@ -173,7 +180,7 @@ a:hover { color: var(--brand-hover); }</pre>
           </div>
           <pre class="snippet">.callout {
   background: var(--surface-1);
-  border-left: 3px solid var(--brand);
+  border-left: var(--border-width-accent) solid var(--brand);
   border-radius: 0 var(--radius) var(--radius) 0;
   padding: var(--space-3) var(--space-4);
 }</pre>
@@ -182,30 +189,10 @@ a:hover { color: var(--brand-hover); }</pre>
     </section>
 
     <footer class="bottom">
-      <p>Every token here that predates 2026-09-15 keeps its name and value forever — see <a href="README.md">README.md</a> for the compatibility contract and full reference, and <a href="CHANGELOG.md">CHANGELOG.md</a> for what's changed.</p>
+      <p>Every token here that predates 2026-09-15 keeps its name and value forever — see <a href="https://github.com/openevo-ccs/openevo-core/blob/main/design-system/README.md">README.md</a> for the compatibility contract and full reference, and <a href="https://github.com/openevo-ccs/openevo-core/blob/main/design-system/CHANGELOG.md">CHANGELOG.md</a> for what's changed.</p>
     </footer>
   </div>
 
-  <script>
-    (function () {
-      var root = document.documentElement;
-      var modes = ['system', 'light', 'dark'];
-      var btn = document.getElementById('theme-toggle');
-      function apply(mode) {
-        if (mode === 'system') root.removeAttribute('data-theme');
-        else root.setAttribute('data-theme', mode);
-        btn.textContent = 'Theme: ' + mode.charAt(0).toUpperCase() + mode.slice(1);
-      }
-      var saved = null;
-      try { saved = localStorage.getItem('oe-theme'); } catch (e) {}
-      var mode = modes.indexOf(saved) > -1 ? saved : 'system';
-      apply(mode);
-      btn.addEventListener('click', function () {
-        mode = modes[(modes.indexOf(mode) + 1) % modes.length];
-        apply(mode);
-        try { localStorage.setItem('oe-theme', mode); } catch (e) {}
-      });
-    })();
-  </script>
+  <script src="theme-toggle.js"></script>
 </body>
 </html>

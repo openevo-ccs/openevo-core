@@ -45,7 +45,7 @@ h1 {
 
 .eyebrow {
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--tracking-wide);
   font-size: var(--text-xs);
   color: var(--text-muted);
   margin: 0 0 var(--space-1);
@@ -67,16 +67,22 @@ button#theme-toggle {
   border-radius: var(--radius-full);
   padding: var(--space-2) var(--space-4);
   cursor: pointer;
-  transition: border-color var(--duration-fast) var(--ease-standard);
 }
 button#theme-toggle:hover { border-color: var(--brand); }
+
+@media (prefers-reduced-motion: no-preference) {
+  button#theme-toggle, .btn {
+    transition: border-color var(--duration-fast) var(--ease-standard),
+                background var(--duration-fast) var(--ease-standard);
+  }
+}
 
 a { color: var(--brand); }
 a:hover { color: var(--brand-hover); }
 
 :focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring);
-  outline-offset: 2px;
+  outline-offset: var(--focus-ring-offset);
 }
 
 section.block { margin-bottom: var(--space-8); }
@@ -249,8 +255,6 @@ section.block > p.desc {
   border-radius: var(--radius);
   padding: var(--space-2) var(--space-4);
   cursor: pointer;
-  transition: background var(--duration-fast) var(--ease-standard),
-              border-color var(--duration-fast) var(--ease-standard);
 }
 .btn-primary {
   background: var(--brand);
@@ -278,7 +282,7 @@ section.block > p.desc {
 
 .callout {
   background: var(--surface-1);
-  border-left: 3px solid var(--brand);
+  border-left: var(--border-width-accent) solid var(--brand);
   border-radius: 0 var(--radius) var(--radius) 0;
   padding: var(--space-3) var(--space-4);
   font-size: var(--text-sm);
