@@ -12,6 +12,10 @@
 
 ---
 
+> **Looking for the OpenEvo logo or design tokens?** See [`AGENTS.md`](AGENTS.md) — design tokens
+> live in [`design-system/tokens.css`](design-system/tokens.css); no logo file currently exists
+> anywhere in this repo, so don't assume one is here and don't fabricate one.
+
 ## What is this?
 
 **OpenEvo Core** is the connective infrastructure shared by every repository in the OpenEvo CCS Lab: the `oe:` upper ontology, the `OE-{TYPE}-######` identifier scheme, the cross-repo RFC process for proposing new shared ontology classes, and the `www.w3id.org/openevo/` namespace root.
