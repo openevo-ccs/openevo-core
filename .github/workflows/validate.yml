@@ -21,3 +21,6 @@ jobs:
 
       - name: Validate ontology
         run: python scripts/validate.py
+
+      - name: Validate retired-id table
+        run: python scripts/validate_retired_ids.py
