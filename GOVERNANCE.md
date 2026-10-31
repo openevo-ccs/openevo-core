@@ -16,7 +16,7 @@ This document exists because `conceptbase` — the ecosystem's first mature repo
 
 **Does not own:**
 - Any entity *instance* data. Zero Concepts, LPMs, Strands, Competencies, Resources, Projects, Literature records, People, Groups, Questions, Methods, or TheoryBase nodes live here — those live in their owning Foundational Repo, per `lab_manager/docs/design-notes/ecosystem-base-graph-project-architecture-and-ontology-plan.md` §3.1.
-- Entity-specific JSON Schemas (`concept.schema.yaml`, `lpm.schema.yaml`, etc.) or their shared `$defs` — those are ConceptBase's own (`conceptbase/schemas/`), since they encode ConceptBase's own identifier patterns and validation rules, not generic kernel content.
+- Entity-specific JSON Schemas (`concept.schema.yaml`, `lpm.schema.yaml`, etc.) or their shared `$defs` — those are ConceptBase's own (`conceptbase/schemas/`), since they encode ConceptBase's own identifier patterns and validation rules and carry no generic kernel content.
 
 ## Roles
 
@@ -40,7 +40,7 @@ A pull request against `proposals/` is required for:
 
 Everything else — a new Concept, LPM, Strand, Competency, Resource, Project, Literature record, Person, Group, Question, Method, TheoryBase node, or a new vocabulary within an existing class — is **not** proposed here. It goes to the owning Foundational Repo's own `proposals/`, per that repo's own `GOVERNANCE.md`.
 
-**Claiming an RFC number** (added 2026-08-24). Grepping the highest number already in `proposals/` and adding one is a race, not a reservation — three numbers in `conceptbase/proposals/` (0013, 0017, 0018) were independently double-claimed by unrelated branches this way before anyone noticed. Use `lab_manager/scripts/reserve_proposal_number.py --repo <repo> --topic <slug>` instead: it appends a row to that repo's `proposals/RFC_LEDGER.md` and pushes to `origin/main` immediately, so a concurrent claim becomes a rejected push (loud, retryable) rather than two RFC documents silently claiming the same number for days. This is required practice for any RFC filed against this repo or any Foundational Repo's own `proposals/` — not optional convention.
+**Claiming an RFC number** (added 2026-08-24). Grepping the highest number already in `proposals/` and adding one is a race that reserves nothing — three numbers in `conceptbase/proposals/` (0013, 0017, 0018) were independently double-claimed by unrelated branches this way before anyone noticed. Use `lab_manager/scripts/reserve_proposal_number.py --repo <repo> --topic <slug>` instead: it appends a row to that repo's `proposals/RFC_LEDGER.md` and pushes to `origin/main` immediately, so a concurrent claim becomes a rejected push (loud, retryable) rather than two RFC documents silently claiming the same number for days. This is required practice for any RFC filed against this repo or any Foundational Repo's own `proposals/`.
 
 ## Lifecycle Status
 
@@ -52,11 +52,23 @@ proposed → accepted → stable → deprecated → superseded
                                      retracted
 ```
 
-A status **MUST NOT** revert (e.g. `deprecated` back to `stable`) without a new RFC. `retracted` is a parallel terminal state reachable directly from `accepted` or `stable` — not sequential after `deprecated` — and does not imply supersession. (Identical rule to `conceptbase/GOVERNANCE.md`'s Lifecycle Status section — restated here because it now governs the shared ontology's own classes/properties, not just ConceptBase's entities.)
+A status **MUST NOT** revert (e.g. `deprecated` back to `stable`) without a new RFC. `retracted` is a parallel terminal state reachable directly from `accepted` or `stable`, with no step through `deprecated`, and does not imply supersession. (Identical rule to `conceptbase/GOVERNANCE.md`'s Lifecycle Status section — restated here because it now governs the shared ontology's own classes and properties as well as ConceptBase's entities.)
 
 ## Deprecation Policy
 
 No `oe:` class or property is ever removed once `status: accepted` or higher. A deprecated one **MUST** remain resolvable at its existing IRI indefinitely, carry a `supersededBy` pointer where one exists, and continue to appear in query results, so no Foundational or Project repo (of any kind — `graph`/`lpm`/`app`) is ever silently broken by a kernel change.
+
+## Retired and renamed ids
+
+An id can stop existing under its old spelling: the Concept and Competency ids moved to slugs on 2026-08-16, the Strand and LPM ids on 2026-09-03, and the two LPM repos `bio-core-k12` and `oe-interdisciplinary-k12` were deleted after their content moved into OpenLPM. Those renames updated the citers in the same pass, and some citers were missed. `registry/retired-ids.yaml` is the one machine-readable list of what happened to each old id, so a missed citer can still be followed.
+
+- **What goes in it.** One entry per old id: its fate (`aliased` with a `successor`, `moved`, or `retired`), the date, the reason, and the sources that confirm it. Rules cover a whole family of ids at once, such as every strand id of a moved LPM. The table lists ids only and holds no record content.
+- **When to add an entry.** In the same change that renames an id or moves its record out of the repos the nightly check reads, and only when a primary source names the old id and its fate. A successor is never guessed.
+- **What it does.** A reference to a listed id counts as resolved. The lab's nightly reference check reads the table from this repo's published main branch and reports those references under their own heading, so the broken-reference count shows only ids nobody has accounted for.
+- **Check.** `python scripts/validate_retired_ids.py` checks the table's shape and runs in CI. It does not check the sources an entry names. A person does that.
+- **Status.** The first version (2026-10-31) is an AI draft that no expert has reviewed. It covers the 40 concept renames, the 7 strands, 2 LPMs and 4 sub-strands whose renames a source confirms, and the two moved LPM repos. Other renames, such as the Competency, Theory and Literature ids, are not listed yet.
+
+No RFC was filed for the table. It adds no class, changes no id scheme and moves no namespace path, and the four earlier id renames were also made without RFCs.
 
 ## Independent Versioning
 
@@ -78,7 +90,7 @@ numeric block-allocation entirely, to `OE-CONCEPT-<vocab-slug>-<code-slug>` /
 `OE-CONCEPT-bio-core-natural-selection`; `OE-COMPETENCY-000800` →
 `OE-COMPETENCY-openevo-core-competencies-ct`). See `conceptbase/GOVERNANCE.md` and
 `competencybase/GOVERNANCE.md` for the live registries; the table below is retained as
-**historical record**, not a live one — new vocabularies mint slug-based ids directly in their
+**historical record** and is no longer live. New vocabularies mint slug-based ids directly in their
 owning repo, no block reservation here. `oe:LPM`/`oe:Strand` are unaffected and still use numeric
 block-allocation.
 
@@ -94,11 +106,11 @@ block-allocation.
 | `NGSS-LIFE-SCIENCE` (Competency) | `OE-COMPETENCY-000100`–`000199` | |
 | `AI4K12` (Competency) | `OE-COMPETENCY-000200`–`000699` | Wider block, reserved up front per RFC-0007 |
 | `EVO-ED-ASSESSMENT-TARGETS` (Competency) | `OE-COMPETENCY-000700`–`000799` | Per RFC-0014 |
-| `OPENEVO-CORE-COMPETENCIES` (Competency) | `OE-COMPETENCY-000800`–`000899` | First OpenEvo-authored competency vocabulary; per RFC-0016. Whole block reserved for all four planned OpenEvo core competencies (Computational Thinking, Evolutionary Causal Reasoning, Decentralized Causal Reasoning, Systems Thinking), not just RFC-0016's 7 entries. |
+| `OPENEVO-CORE-COMPETENCIES` (Competency) | `OE-COMPETENCY-000800`–`000899` | First OpenEvo-authored competency vocabulary; per RFC-0016. Whole block reserved for all four planned OpenEvo core competencies (Computational Thinking, Evolutionary Causal Reasoning, Decentralized Causal Reasoning, Systems Thinking), which is more than RFC-0016's 7 entries. |
 
 *(This table mirrors `conceptbase/GOVERNANCE.md`'s Identifier Block Allocation section, re-synced 2026-08-02 after it had drifted since the 2026-07-26 migration. ConceptBase's own file remains the live, authoritative record of its own blocks' current usage; this copy exists so a new Foundational Repo reserving its first block can see the whole cross-repo picture in one place without needing to check nine separate `GOVERNANCE.md` files. Keep both in sync when either changes.)*
 
-**Known unresolved collision, found during this re-sync (2026-08-02):** the unmerged branch `rfc-0011-teacher-competency-frameworks` (conceptbase) reserves `DIGCOMPEDU 000700–000799`, `UNESCO-AI-CFT 000800–000899`, `KMK-DIGITALE-WELT 000900–000999`, and `CCC 001000–001099` — a range now **entirely double-allocated** by RFC-0014 (`000700`–`000799`, merged) and RFC-0016 (`000800`–`000899`, merged) above. RFC-0011 cannot be merged as currently drafted; it needs fresh block numbers (the next free Competency block starts at `000900`) before it's touched again. Not fixed here — re-deriving an entire unmerged branch's id assignments is a real, separate task, not a side effect of this sync.
+**Known unresolved collision, found during this re-sync (2026-08-02):** the unmerged branch `rfc-0011-teacher-competency-frameworks` (conceptbase) reserves `DIGCOMPEDU 000700–000799`, `UNESCO-AI-CFT 000800–000899`, `KMK-DIGITALE-WELT 000900–000999`, and `CCC 001000–001099` — a range now **entirely double-allocated** by RFC-0014 (`000700`–`000799`, merged) and RFC-0016 (`000800`–`000899`, merged) above. RFC-0011 cannot be merged as currently drafted; it needs fresh block numbers (the next free Competency block starts at `000900`) before it's touched again. Not fixed here — re-deriving an entire unmerged branch's id assignments is a separate task from this sync.
 
 **Other Foundational Repos:**
 
@@ -132,7 +144,7 @@ records across all nine classes.
 TeachingBase, ProjectBase, HumanBase: no blocks/ids reserved yet, and no founding RFC drafted —
 each needs one before minting a permanent id. Rows will be added here as that happens.
 
-*\*Note: `oe:Competency` instances currently live in ConceptBase (see table above); whether CompetencyBase's planned migration (base-graph-project plan §3.1) relocates existing blocks or only governs new ones is a decision for that migration's own RFC, not this document.*
+*\*Note: `oe:Competency` instances currently live in ConceptBase (see table above); whether CompetencyBase's planned migration (base-graph-project plan §3.1) relocates existing blocks or only governs new ones is a decision for that migration's own RFC. This document leaves it open.*
 
 ## Compatibility Checking
 

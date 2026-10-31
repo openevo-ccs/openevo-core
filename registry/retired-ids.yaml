@@ -1,0 +1,570 @@
+# ============================================================================
+# Path: /registry/retired-ids.yaml
+# ============================================================================
+# One machine-readable list of OpenEvo ids that no longer exist under that
+# spelling, and where each one went. Built so that a reference to an old id
+# can be followed instead of reported as broken (the lab's nightly reference
+# check reads this file from the published main branch). See GOVERNANCE.md,
+# "Retired and renamed ids".
+#
+# AI DRAFT. Claude Code compiled this table on 2026-10-31 from the sources
+# named in each entry. No expert and no second person has reviewed it. Each
+# entry says whether the source names the pair outright (named-in-source) or
+# whether the pair follows from the source's numbering (derived-from-source).
+#
+# Statuses:
+#   aliased  the old id was replaced by `successor`, which is an id of its own
+#   moved    the id is unchanged, but its record now lives where the nightly
+#            check does not read. OpenLPM keeps it in a database.
+#   retired  the id has no successor (none yet; reserved for later entries)
+#
+# Add an entry only when a primary source names the old id and its fate.
+# Never guess a successor.
+# ============================================================================
+
+meta:
+  title: Retired and renamed OpenEvo ids
+  version: 0.1.0
+  date: '2026-10-31'
+  added_by: Claude Code, for Dustin Eirdosh
+  review_status: author-draft
+  extracted_by: llm
+  model: claude-sonnet-5-5
+
+entries:
+- id: OE-CONCEPT-000101
+  status: aliased
+  successor: OE-CONCEPT-bio-core-evolution
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000102
+  status: aliased
+  successor: OE-CONCEPT-bio-core-natural-selection
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000103
+  status: aliased
+  successor: OE-CONCEPT-bio-core-mutation
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000104
+  status: aliased
+  successor: OE-CONCEPT-bio-core-adaptation
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000105
+  status: aliased
+  successor: OE-CONCEPT-bio-core-fitness
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000106
+  status: aliased
+  successor: OE-CONCEPT-bio-core-gene
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000107
+  status: aliased
+  successor: OE-CONCEPT-bio-core-allele
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000108
+  status: aliased
+  successor: OE-CONCEPT-bio-core-population
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000109
+  status: aliased
+  successor: OE-CONCEPT-bio-core-species
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000110
+  status: aliased
+  successor: OE-CONCEPT-bio-core-speciation
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000111
+  status: aliased
+  successor: OE-CONCEPT-bio-core-drift
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000112
+  status: aliased
+  successor: OE-CONCEPT-bio-core-inheritance
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000113
+  status: aliased
+  successor: OE-CONCEPT-bio-core-phylogeny
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000114
+  status: aliased
+  successor: OE-CONCEPT-bio-core-common-ancestor
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000115
+  status: aliased
+  successor: OE-CONCEPT-bio-core-selection-pressure
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000116
+  status: aliased
+  successor: OE-CONCEPT-bio-core-extinction
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000090
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-evolutionary-process
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000201
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-inheritance
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000203
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-transmission
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000204
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-innovation
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000205
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-information
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000206
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-representation
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000207
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-cooperation
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000208
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-conflict
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000209
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-niche-construction
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000210
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-development
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000211
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-agency
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000212
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-scaffolding
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000213
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-selection
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000214
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-variation
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000215
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-learning
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000216
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-teaching
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000217
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-communication
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000218
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-technology
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000219
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-culture
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000220
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-institutions
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000221
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-norms
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000222
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-knowledge
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000223
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-collective-intelligence
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-CONCEPT-000224
+  status: aliased
+  successor: OE-CONCEPT-oe-interdisciplinary-distributed-cognition
+  retired_on: '2026-08-16'
+  reason: oe:Concept ids moved from numeric blocks to <vocabulary>-<concept> slugs.
+  verification: named-in-source
+  verified_against:
+  - conceptbase commit 72f7919 (the rename itself; old and new id on adjacent diff lines)
+  - successor is defined in conceptbase vocabularies on origin/main
+- id: OE-LPM-000001
+  status: aliased
+  successor: OE-LPM-bio-core-k12
+  retired_on: '2026-09-03'
+  reason: oe:LPM and oe:Strand ids moved from numeric blocks to <lpm-slug>-<strand-slug> slugs. Designed and run 2026-09-03;
+    reached ConceptBase main on 2026-10-01 (PR 11).
+  verification: named-in-source
+  verified_against:
+  - conceptbase/GOVERNANCE.md, Strand ID blocks and LPM ID blocks sections
+  - conceptbase commit d049cb6, registry/lpm-index.json
+- id: OE-LPM-000002
+  status: aliased
+  successor: OE-LPM-oe-interdisciplinary-k12
+  retired_on: '2026-09-03'
+  reason: oe:LPM and oe:Strand ids moved from numeric blocks to <lpm-slug>-<strand-slug> slugs. Designed and run 2026-09-03;
+    reached ConceptBase main on 2026-10-01 (PR 11).
+  verification: named-in-source
+  verified_against:
+  - conceptbase/GOVERNANCE.md, Strand ID blocks and LPM ID blocks sections
+  - conceptbase commit d049cb6, registry/lpm-index.json
+- id: OE-STRAND-000101
+  status: aliased
+  successor: OE-STRAND-bio-core-k12-variation-inheritance
+  retired_on: '2026-09-03'
+  reason: oe:LPM and oe:Strand ids moved from numeric blocks to <lpm-slug>-<strand-slug> slugs. Designed and run 2026-09-03;
+    reached ConceptBase main on 2026-10-01 (PR 11).
+  verification: named-in-source
+  verified_against:
+  - 'openlpm scripts/generate_bio_core_interdisciplinary_lpm_seed.py (source_path of each strand file): strands/strand-101-variation-inheritance.yaml'
+  - theorybase records/curriculum-decisions.yaml (names the old id with its grade band)
+- id: OE-STRAND-000102
+  status: aliased
+  successor: OE-STRAND-bio-core-k12-natural-selection-adaptation
+  retired_on: '2026-09-03'
+  reason: oe:LPM and oe:Strand ids moved from numeric blocks to <lpm-slug>-<strand-slug> slugs. Designed and run 2026-09-03;
+    reached ConceptBase main on 2026-10-01 (PR 11).
+  verification: named-in-source
+  verified_against:
+  - conceptbase/GOVERNANCE.md, Strand ID blocks and LPM ID blocks sections
+  - openevo-graph edges/disputes, note left at the edge when the id was renamed
+  - 'openlpm scripts/generate_bio_core_interdisciplinary_lpm_seed.py (source_path of each strand file): strand-102-natural-selection-adaptation.yaml'
+- id: OE-STRAND-000103
+  status: aliased
+  successor: OE-STRAND-bio-core-k12-speciation-diversity
+  retired_on: '2026-09-03'
+  reason: oe:LPM and oe:Strand ids moved from numeric blocks to <lpm-slug>-<strand-slug> slugs. Designed and run 2026-09-03;
+    reached ConceptBase main on 2026-10-01 (PR 11).
+  verification: derived-from-source
+  verified_against:
+  - 'openlpm scripts/generate_bio_core_interdisciplinary_lpm_seed.py (source_path of each strand file): strands/strand-103-speciation-diversity.yaml'
+- id: OE-STRAND-000201
+  status: aliased
+  successor: OE-STRAND-oe-interdisciplinary-k12-inheritance-variation-selection
+  retired_on: '2026-09-03'
+  reason: oe:LPM and oe:Strand ids moved from numeric blocks to <lpm-slug>-<strand-slug> slugs. Designed and run 2026-09-03;
+    reached ConceptBase main on 2026-10-01 (PR 11).
+  verification: derived-from-source
+  verified_against:
+  - 'openlpm scripts/generate_bio_core_interdisciplinary_lpm_seed.py (source_path of each strand file): strands/strand-201-inheritance-variation-selection.yaml'
+  - conceptbase alignments/OE-ALIGN-000004.yaml (names the old id with its grade band)
+- id: OE-STRAND-000202
+  status: aliased
+  successor: OE-STRAND-oe-interdisciplinary-k12-agency-development-niche
+  retired_on: '2026-09-03'
+  reason: oe:LPM and oe:Strand ids moved from numeric blocks to <lpm-slug>-<strand-slug> slugs. Designed and run 2026-09-03;
+    reached ConceptBase main on 2026-10-01 (PR 11).
+  verification: named-in-source
+  verified_against:
+  - openevo-graph edges/disputes, note left at the edge when the id was renamed
+  - 'openlpm scripts/generate_bio_core_interdisciplinary_lpm_seed.py (source_path of each strand file): strand-202-agency-development-niche.yaml'
+  - lab_manager docs/design-notes/strand-lpm-id-scheme-migration.md
+- id: OE-STRAND-000203
+  status: aliased
+  successor: OE-STRAND-oe-interdisciplinary-k12-culture-technology-collective
+  retired_on: '2026-09-03'
+  reason: oe:LPM and oe:Strand ids moved from numeric blocks to <lpm-slug>-<strand-slug> slugs. Designed and run 2026-09-03;
+    reached ConceptBase main on 2026-10-01 (PR 11).
+  verification: derived-from-source
+  verified_against:
+  - 'openlpm scripts/generate_bio_core_interdisciplinary_lpm_seed.py (source_path of each strand file): strands/strand-203-culture-technology-collective.yaml'
+- id: OE-STRAND-000204
+  status: aliased
+  successor: OE-STRAND-oe-interdisciplinary-k12-analogy-search-metacognition
+  retired_on: '2026-09-03'
+  reason: oe:LPM and oe:Strand ids moved from numeric blocks to <lpm-slug>-<strand-slug> slugs. Designed and run 2026-09-03;
+    reached ConceptBase main on 2026-10-01 (PR 11).
+  verification: named-in-source
+  verified_against:
+  - 'openlpm scripts/generate_bio_core_interdisciplinary_lpm_seed.py (source_path of each strand file): strands/strand-204-analogy-search-metacognition.yaml'
+  - conceptbase/GOVERNANCE.md, Strand ID blocks and LPM ID blocks sections (names strand 204 as analogy-search-metacognition)
+- id: OE-STRAND-000213
+  status: aliased
+  successor: OE-STRAND-oe-interdisciplinary-k12-inheritance-variation-selection-68
+  retired_on: '2026-09-03'
+  reason: oe:LPM and oe:Strand ids moved from numeric blocks to <lpm-slug>-<strand-slug> slugs. Designed and run 2026-09-03;
+    reached ConceptBase main on 2026-10-01 (PR 11).
+  verification: named-in-source
+  verified_against:
+  - 'theorybase records/curriculum-decisions.yaml (names the old id with its grade band): strand 201, grade band 6-8'
+  - conceptbase/GOVERNANCE.md, Strand ID blocks and LPM ID blocks sections (substrand block 211-214 belongs to strand 201)
+- id: OE-STRAND-000214
+  status: aliased
+  successor: OE-STRAND-oe-interdisciplinary-k12-inheritance-variation-selection-912
+  retired_on: '2026-09-03'
+  reason: oe:LPM and oe:Strand ids moved from numeric blocks to <lpm-slug>-<strand-slug> slugs. Designed and run 2026-09-03;
+    reached ConceptBase main on 2026-10-01 (PR 11).
+  verification: named-in-source
+  verified_against:
+  - 'conceptbase alignments/OE-ALIGN-000004.yaml (names the old id with its grade band): strand 1, 9-12'
+  - conceptbase/GOVERNANCE.md, Strand ID blocks and LPM ID blocks sections (substrand block 211-214 belongs to strand 201)
+- id: OE-STRAND-000223
+  status: aliased
+  successor: OE-STRAND-oe-interdisciplinary-k12-agency-development-niche-68
+  retired_on: '2026-09-03'
+  reason: oe:LPM and oe:Strand ids moved from numeric blocks to <lpm-slug>-<strand-slug> slugs. Designed and run 2026-09-03;
+    reached ConceptBase main on 2026-10-01 (PR 11).
+  verification: derived-from-source
+  verified_against:
+  - conceptbase/GOVERNANCE.md, Strand ID blocks and LPM ID blocks sections (substrand block 221-224 belongs to strand 202)
+  - grade-band order K-2, 3-5, 6-8, 9-12 confirmed at 000213 (6-8), 000214 and 000224 (9-12), which places 000223 at 6-8
+- id: OE-STRAND-000224
+  status: aliased
+  successor: OE-STRAND-oe-interdisciplinary-k12-agency-development-niche-912
+  retired_on: '2026-09-03'
+  reason: oe:LPM and oe:Strand ids moved from numeric blocks to <lpm-slug>-<strand-slug> slugs. Designed and run 2026-09-03;
+    reached ConceptBase main on 2026-10-01 (PR 11).
+  verification: named-in-source
+  verified_against:
+  - 'theorybase records/curriculum-decisions.yaml (names the old id with its grade band): strand 202, grade band 9-12'
+  - conceptbase alignments/OE-ALIGN-000005.yaml
+
+rules:
+- id: OE-LPM-bio-core-k12
+  match: exact
+  status: moved
+  now_lives_in: OpenLPM
+  reason: The GitHub repos bio-core-k12 and oe-interdisciplinary-k12 were deleted on purpose after their content moved into
+    OpenLPM. The ids are unchanged. OpenLPM keeps each one as `source_id` in its seed (migration 092), next to the original
+    repo and file path.
+  verified_against:
+  - 'gh repo view: both repos no longer resolve on GitHub'
+  - openlpm supabase/migrations/092_bio_core_interdisciplinary_lpm_content_seed.sql (source_id and _source.repo of each record)
+  - conceptbase registry/strand-index.json ownershipPrefixes (commit d049cb6)
+- id: OE-LPM-oe-interdisciplinary-k12
+  match: exact
+  status: moved
+  now_lives_in: OpenLPM
+  reason: The GitHub repos bio-core-k12 and oe-interdisciplinary-k12 were deleted on purpose after their content moved into
+    OpenLPM. The ids are unchanged. OpenLPM keeps each one as `source_id` in its seed (migration 092), next to the original
+    repo and file path.
+  verified_against:
+  - 'gh repo view: both repos no longer resolve on GitHub'
+  - openlpm supabase/migrations/092_bio_core_interdisciplinary_lpm_content_seed.sql (source_id and _source.repo of each record)
+  - conceptbase registry/strand-index.json ownershipPrefixes (commit d049cb6)
+- id: OE-STRAND-bio-core-k12-
+  match: prefix
+  status: moved
+  now_lives_in: OpenLPM
+  reason: The GitHub repos bio-core-k12 and oe-interdisciplinary-k12 were deleted on purpose after their content moved into
+    OpenLPM. The ids are unchanged. OpenLPM keeps each one as `source_id` in its seed (migration 092), next to the original
+    repo and file path.
+  verified_against:
+  - 'gh repo view: both repos no longer resolve on GitHub'
+  - openlpm supabase/migrations/092_bio_core_interdisciplinary_lpm_content_seed.sql (source_id and _source.repo of each record)
+  - conceptbase registry/strand-index.json ownershipPrefixes (commit d049cb6)
+- id: OE-STRAND-oe-interdisciplinary-k12-
+  match: prefix
+  status: moved
+  now_lives_in: OpenLPM
+  reason: The GitHub repos bio-core-k12 and oe-interdisciplinary-k12 were deleted on purpose after their content moved into
+    OpenLPM. The ids are unchanged. OpenLPM keeps each one as `source_id` in its seed (migration 092), next to the original
+    repo and file path.
+  verified_against:
+  - 'gh repo view: both repos no longer resolve on GitHub'
+  - openlpm supabase/migrations/092_bio_core_interdisciplinary_lpm_content_seed.sql (source_id and _source.repo of each record)
+  - conceptbase registry/strand-index.json ownershipPrefixes (commit d049cb6)
