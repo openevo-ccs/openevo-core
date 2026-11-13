@@ -54,7 +54,7 @@ It exists because that infrastructure used to live inside [`conceptbase`](https:
                                      │
                                      ▼
                                PROJECT REPOS
-                    EvoMentor · EvoMentor_DE · KoMet · netlogo · (future)
+                    EvoMentor · EvoMentor_DE (archived) · KoMet · netlogo · (future)
        thin applications that assemble Foundational + Graph entities by id
 ```
 
