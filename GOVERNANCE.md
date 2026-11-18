@@ -91,8 +91,16 @@ numeric block-allocation entirely, to `OE-CONCEPT-<vocab-slug>-<code-slug>` /
 `OE-COMPETENCY-openevo-core-competencies-ct`). See `conceptbase/GOVERNANCE.md` and
 `competencybase/GOVERNANCE.md` for the live registries; the table below is retained as
 **historical record** and is no longer live. New vocabularies mint slug-based ids directly in their
-owning repo, no block reservation here. `oe:LPM`/`oe:Strand` are unaffected and still use numeric
-block-allocation.
+owning repo, no block reservation here. `oe:Strand` and `oe:LPM` followed on 2026-09-03 (to
+`OE-STRAND-<lpm-slug>-<strand-slug>` and `OE-LPM-<slug>`).
+
+**No id is numbered any more (decision of 2026-11-18, Dustin Eirdosh).** Every id family is a slug,
+including the ones that had stayed numbered on purpose: sandbox concepts, sandbox LPMs and strands,
+alignments, framework relations and assessment ids. The move for those families is planned and
+tracked in `lab_manager/docs/design-notes/ecosystem-numbered-ids-to-slugs-migration-plan-2026-11-18.md`,
+and until a family has moved, its numbered ids are being retired and no new ones are minted. Competencies are done:
+they all live in CompetencyBase under slug ids, and the retired numbers are mapped to them in
+`competencybase/legacy-ids/competency-numbered-to-slug.json`. A new record in any repo never gets a number.
 
 **ConceptBase** (`oe:Concept`, `oe:LPM`, `oe:Strand`, `oe:Competency`):
 
