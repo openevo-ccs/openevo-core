@@ -1,6 +1,6 @@
 # OpenEvo Core
 
-> The shared kernel underneath every Foundational and Project repo in the OpenEvo Computational Curriculum Studies (CCS) Lab — Project repos include the free-schema field-knowledge repos (`ccs-graph`, `openevo-graph`, `eva-graph`, kind: `graph`), OECB-governed LPM content repos (kind: `lpm`), and thin applications (kind: `app`); see `lab_manager/docs/design-notes/ecosystem-two-layer-architecture-simplification-plan.md`. Owns no curriculum content of its own.
+> The shared kernel underneath every Foundational and Project repo in the OpenEvo Computational Curriculum Studies (CCS) Lab — Project repos include the free-schema field-knowledge repos (`ccs-graph`, `openevo-graph`, `eva-graph`, kind: `graph`), ConceptBase-governed LPM content repos (kind: `lpm`), and thin applications (kind: `app`); see `lab_manager/docs/design-notes/ecosystem-two-layer-architecture-simplification-plan.md`. Owns no curriculum content of its own.
 
 [![OpenEvo Lab](https://img.shields.io/badge/OpenEvo%20Lab-openevo.eva.mpg.de-teal)](http://openevo.eva.mpg.de)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/Content%20License-CC--BY--NC--SA%204.0-lightgrey.svg)](LICENSE)
@@ -16,9 +16,9 @@
 
 **OpenEvo Core** is the connective infrastructure shared by every repository in the OpenEvo CCS Lab: the `oe:` upper ontology, the `OE-{TYPE}-######` identifier scheme, the cross-repo RFC process for proposing new shared ontology classes, and the `www.w3id.org/openevo/` namespace root.
 
-It exists because that infrastructure used to live inside [`conceptbase`](https://github.com/openevo-ccs/conceptbase) — the ecosystem's first mature repo, and still the canonical home for `oe:Concept`/`oe:LPM`/`oe:Strand` instances — simply because ConceptBase was, for a time, the only real repo in the ecosystem. It isn't anymore. Nine **Foundational Repos** now share this kernel co-equally; none of them, ConceptBase included, governs it unilaterally. Full rationale in `lab_manager`'s design note on this exact question (`docs/design-notes/ecosystem-shared-kernel-and-co-equal-governance-plan.md`) — `lab_manager` is a private repo with no public link.
+It exists because that infrastructure used to live inside [`conceptbase`](https://github.com/openevo-ccs/conceptbase) — the ecosystem's first mature repo, and still the canonical home for `oe:Concept`/`oe:LPM`/`oe:Strand` instances — simply because ConceptBase was, for a time, the only real repo in the ecosystem. It isn't anymore. Eleven **Foundational Repos** now share this kernel co-equally; none of them, ConceptBase included, governs it unilaterally. Full rationale in `lab_manager`'s design note on this exact question (`docs/design-notes/ecosystem-shared-kernel-and-co-equal-governance-plan.md`) — `lab_manager` is a private repo with no public link.
 
-> **This repo stores no entity instances.** No Concepts, LPMs, Strands, Competencies, Resources, Projects, Literature records, People, Groups, Questions, Methods, or TheoryBase nodes live here. Every one of those lives in its own owning Foundational Repo, referenced by permanent identifier — never duplicated.
+> **This repo stores no entity instances.** No Concepts, LPMs, Strands, Competencies, Resources, Projects, Literature records, People, Groups, Questions, Methods, TheoryBase nodes, or SpeciesBase taxa/features/explanations live here. Every one of those lives in its own owning Foundational Repo, referenced by permanent identifier — never duplicated.
 
 ## The ecosystem
 
@@ -42,6 +42,8 @@ It exists because that infrastructure used to live inside [`conceptbase`](https:
    TheoryBase         — oe:TheoreticalPosition and the wider theory-apparatus node family
    QuestionBase       — oe:Question
    MethodsBase        — oe:Method
+   SpeciesBase        — oe:Taxon, oe:Feature, oe:FeatureExpression, oe:Explanation, and the
+                         wider comparative-biology node family (RFC-0006)
 
                                      │
                                      ▼
@@ -72,7 +74,7 @@ Two independently governed reference LPMs currently depend on ConceptBase's own 
 
 **This repository deliberately does *not* store:**
 
-- ❌ Any entity instance data (Concepts, LPMs, Strands, Competencies, Resources, Projects, Literature, People, Groups, Questions, Methods, TheoryBase nodes) — those live in their owning Foundational Repo.
+- ❌ Any entity instance data (Concepts, LPMs, Strands, Competencies, Resources, Projects, Literature, People, Groups, Questions, Methods, TheoryBase nodes, SpeciesBase taxa/features/explanations) — those live in their owning Foundational Repo.
 - ❌ Entity-specific JSON Schemas or their `$defs` (e.g. `conceptId`/`lpmId`/`strandId` patterns) — those stay in `conceptbase/schemas/`, since they encode ConceptBase's own validation rules and carry no generic kernel content.
 - ❌ Field-specific interpretation, relations, or contested-claims data — that's the job of graph-kind Project repos (`ccs-graph`, `openevo-graph`, `eva-graph`), which get free local schema for exactly this content.
 

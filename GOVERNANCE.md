@@ -23,7 +23,7 @@ This document exists because `conceptbase` — the ecosystem's first mature repo
 | Role | Responsibility | Who holds it today |
 |---|---|---|
 | **Kernel steward** | Merge rights on this repo; final arbitration on upper-ontology changes, identifier-scheme changes, and namespace-root changes. | Dustin Eirdosh |
-| **Foundational Repo delegate** (one seat per base: Concept, Competency, Teaching, Project, Literature, Human, Theory, Question, Method, Species) | Reviews any kernel RFC that would affect their Foundational Repo's entity type — e.g. a new `oe:` class their repo will instantiate, or a block-allocation change. | Dustin Eirdosh (all ten seats today — see note below) |
+| **Foundational Repo delegate** (one seat per base: Concept, Competency, Teaching, Project, Literature, Human, Theory, Question, Method, Species, Quote) | Reviews any kernel RFC that would affect their Foundational Repo's entity type — e.g. a new `oe:` class their repo will instantiate, or a block-allocation change. | Dustin Eirdosh (all eleven seats today — see note below) |
 | **Project-repo representative** | Non-voting review on kernel RFCs that would change what Project repos (any kind — `graph`/`lpm`/`app`) can reference. Distinct from the ProjectBase Foundational-Repo-delegate seat above, which is about the `oe:Project` entity type specifically. | Dustin Eirdosh |
 | **Contributors** | Anyone; submit RFCs via pull request against `proposals/`. | — |
 
@@ -148,6 +148,12 @@ a naming collision with TheoryBase's own sense, now a sibling subclass under a s
 RFC and already in production use). No numeric block needed; the migration off the original
 `SB-{TYPE}-######` scheme was already complete (2026-08-19) before this RFC was drafted. ~150
 records across all nine classes.
+
+**QuoteBase** (`oe:Quote`) — per RFC-0010 (accepted 2026-09-01), the 11th Foundational Repo:
+`OE-QUOTE-<slug>`, no numeric block, no vocab-slug segment (same reasoning as TheoryBase/
+QuestionBase/MethodsBase/LiteratureBase — one corpus, no multi-vocabulary structure). Minted as
+permanent from the start — no pre-RFC provisional-id era, unlike its four siblings above. 14
+records, scraped from the OpenEvo Teacher's Guide, 3rd Edition.
 
 TeachingBase, ProjectBase, HumanBase: no blocks/ids reserved yet, and no founding RFC drafted —
 each needs one before minting a permanent id. Rows will be added here as that happens.
