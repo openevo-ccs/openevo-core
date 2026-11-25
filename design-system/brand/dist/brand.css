@@ -23,6 +23,8 @@
   --oe-map-4: #755323;
   --oe-map-5: #C68724;
   --oe-map-6: #A96FC1;
+  --oe-primary: var(--oe-teal);
+  --oe-secondary: var(--oe-navy);
   --oe-font-heading: 'Nunito', system-ui, sans-serif;
   --oe-font-body: 'Roboto', system-ui, sans-serif;
   --oe-font-button: 'Roboto Slab', serif;

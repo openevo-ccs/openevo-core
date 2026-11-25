@@ -19,6 +19,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 SRC = HERE / "brand.tokens.json"
 DIST = HERE / "dist"
+TARGET_FILE = HERE / "site-target.txt"                # optional: a folder (relative to this one) that also gets a copy of brand.css
+SITE_CSS = (HERE / TARGET_FILE.read_text(encoding="utf-8").strip()).resolve() if TARGET_FILE.exists() else None
 
 
 def load() -> dict:
@@ -44,6 +46,8 @@ def brand_css(t: dict) -> str:
     lines = [f"/* GENERATED from kit/design/brand.tokens.json v{t['version']}. Do not edit by hand. */", ":root {"]
     for name, val in flat_colors(t).items():
         lines.append(f"  --oe-{name}: {val};")
+    # names the OpenEvo.net stylesheets used before the token file existed
+    lines += ["  --oe-primary: var(--oe-teal);", "  --oe-secondary: var(--oe-navy);"]
     for key in t["font"]:
         lines.append(f"  --oe-font-{key}: {font_stack(t, key)};")
     w = t["type"]["web"]
@@ -117,8 +121,11 @@ def outputs(t: dict) -> dict[str, str]:
 def main() -> int:
     t = load()
     out = outputs(t)
+    site = SITE_CSS is not None and SITE_CSS.is_dir()
     if "--check" in sys.argv:
         bad = [n for n, txt in out.items() if not (DIST / n).exists() or (DIST / n).read_text(encoding="utf-8") != txt]
+        if site and (not (SITE_CSS / "brand.css").exists() or (SITE_CSS / "brand.css").read_text(encoding="utf-8") != out["brand.css"]):
+            bad.append("app/css/brand.css")
         if bad:
             print("out of date:", ", ".join(bad), "- run kit/design/build_tokens.py")
             return 1
@@ -127,7 +134,9 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     for n, txt in out.items():
         (DIST / n).write_text(txt, encoding="utf-8", newline="\n")
-    print("wrote", ", ".join(out), "to", DIST)
+    if site:
+        (SITE_CSS / "brand.css").write_text(out["brand.css"], encoding="utf-8", newline="\n")
+    print("wrote", ", ".join(out), "to", DIST, "and app/css/brand.css" if site else "")
     return 0
 
 
