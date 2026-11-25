@@ -1,0 +1,68 @@
+{
+  "_about": "The OpenEvo look in one file. Every stylesheet, Word template, slide template and e-book style is generated from this file by kit/design/build_tokens.py. Edit here and rebuild; never type a colour or font into a page. Version 0.1.0 is the first draft from the format test of 2026-11-25. Sources: the live site's styles.css, the me-mo brand capture of the old WordPress site, the Field Guide styles, and openevo-core's neutral chart tokens.",
+  "version": "0.1.0",
+  "color": {
+    "brand": {
+      "teal":      { "value": "#006C66", "use": "Primary. Accents, links, buttons, section headings." },
+      "navy":      { "value": "#272D63", "use": "Secondary. Book and page titles, logo lettering." },
+      "link":      { "value": "#0170B9", "use": "Link blue used by the old site. Kept for inline links in long text." }
+    },
+    "neutral": {
+      "ink":       { "value": "#1F2933", "use": "Headings in books and body text in print." },
+      "text":      { "value": "#3A3A3A", "use": "Body text on the site." },
+      "text-muted":{ "value": "#52606D", "use": "Secondary text, captions." },
+      "text-faint":{ "value": "#7B8794", "use": "Notes, planned items." },
+      "border":    { "value": "#E4E7EB", "use": "Hairlines and table rules." },
+      "surface":   { "value": "#FFFFFF", "use": "Page background." },
+      "surface-alt":{ "value": "#F5F7FA", "use": "Note boxes and table stripes." }
+    },
+    "data": {
+      "_about": "Chart and diagram colours. Kept apart from the brand colours so a chart never looks like a button. Values come from the Field Guide figures and openevo-core chart tokens.",
+      "series-a":  { "value": "#2A78D6", "use": "First series." },
+      "series-b":  { "value": "#EB6834", "use": "Second series." },
+      "series-c":  { "value": "#1BAF7A", "use": "Third series." },
+      "series-d":  { "value": "#EDA100", "use": "Fourth series." },
+      "good":      { "value": "#0CA30C", "use": "Positive status." },
+      "warning":   { "value": "#FAB219", "use": "Caution status." },
+      "critical":  { "value": "#D03B3B", "use": "Problem status." }
+    },
+    "map": {
+      "_about": "The six causal-map colours shared by TeachingBase widgets and OpenLPM.",
+      "map-1": { "value": "#719F87" },
+      "map-2": { "value": "#C94856" },
+      "map-3": { "value": "#275C8D" },
+      "map-4": { "value": "#755323" },
+      "map-5": { "value": "#C68724" },
+      "map-6": { "value": "#A96FC1" }
+    }
+  },
+  "font": {
+    "heading": { "family": "Nunito",      "fallback": "system-ui, sans-serif", "use": "Headings, menu, wordmark text." },
+    "body":    { "family": "Roboto",      "fallback": "system-ui, sans-serif", "use": "Running text." },
+    "button":  { "family": "Roboto Slab", "fallback": "serif",                  "use": "Buttons only, light weight." },
+    "office-body": { "family": "Calibri", "fallback": "Arial, sans-serif", "use": "Body text in Word and PowerPoint files only. Roboto is not installed on most computers and Office cannot fall back by itself. Nunito headings stay, and the download bundle carries the font files." },
+    "mono":    { "family": "Consolas",    "fallback": "ui-monospace, monospace","use": "Code and file names." }
+  },
+  "type": {
+    "_about": "Sizes in points for print, Word and slides; the web scale is in rem. Ratio 1.2 between steps.",
+    "web":   { "body": "1.0625rem", "small": "0.9375rem", "h1": "2rem", "h2": "1.35rem", "h3": "1.1rem", "line": 1.6 },
+    "print": { "body": "10.5pt", "small": "9pt", "h1": "24pt", "h2": "16pt", "h3": "12.5pt", "line": 1.45 },
+    "slide": { "title": "36pt", "heading": "28pt", "body": "20pt", "small": "14pt" }
+  },
+  "shape": {
+    "radius-card": "12px",
+    "radius-small": "6px",
+    "reading-width": "52rem"
+  },
+  "page": {
+    "_about": "Print page setup for PDF. A4, margins in millimetres. Running title top left, page number bottom outside.",
+    "size": "A4",
+    "margin-top": "20mm",
+    "margin-bottom": "20mm",
+    "margin-inner": "22mm",
+    "margin-outer": "18mm"
+  },
+  "label": {
+    "status": "Drafted with AI assistance, open for review."
+  }
+}

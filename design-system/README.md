@@ -10,6 +10,10 @@ Tokens only: surface/text/border colors, chart series colors, status colors, rad
 and the light/dark theme-switching mechanism. No component markup, no layout rules, no JS — those
 stay independent per app.
 
+## Brand tokens
+
+The OpenEvo brand palette (teal, navy, fonts, print page setup) lives in [`brand/`](brand/README.md), apart from the neutral chart and tool tokens in this folder's `tokens.css`. Use `tokens.css` for charts and tools. Use `brand/dist/brand.css` for anything that should look like OpenEvo.
+
 ## Usage
 
 Link the stylesheet directly:

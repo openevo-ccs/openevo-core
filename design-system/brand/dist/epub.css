@@ -1,0 +1,15 @@
+/* GENERATED from kit/design/brand.tokens.json v0.1.0. Do not edit by hand. */
+:root { --oe-teal: #006C66; --oe-navy: #272D63; --oe-ink: #1F2933;
+  --oe-text-muted: #52606D; --oe-border: #E4E7EB; --oe-surface-alt: #F5F7FA; }
+body { font-family: 'Roboto', system-ui, sans-serif; color: var(--oe-ink); line-height: 1.45; }
+h1, h2, h3, h4 { font-family: 'Nunito', system-ui, sans-serif; line-height: 1.25; page-break-after: avoid; }
+h1 { color: var(--oe-navy); }
+h2 { color: var(--oe-teal); border-top: 1px solid var(--oe-border); padding-top: .3em; margin-top: 1.6em; }
+a { color: var(--oe-teal); }
+table { border-collapse: collapse; width: 100%; font-size: .92em; }
+th, td { border-bottom: 1px solid var(--oe-border); padding: .25em .4em; text-align: left; vertical-align: top; }
+th { color: var(--oe-text-muted); }
+figure { margin: 1em 0; page-break-inside: avoid; }
+img { max-width: 100%; height: auto; }
+figcaption { font-size: .9em; color: var(--oe-text-muted); }
+blockquote { background: var(--oe-surface-alt); border-left: 3px solid var(--oe-teal); margin: 1em 0; padding: .4em .8em; }

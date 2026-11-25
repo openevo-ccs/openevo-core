@@ -1,0 +1,64 @@
+/* GENERATED from kit/design/brand.tokens.json v0.1.0. Do not edit by hand. */
+:root {
+  --oe-teal: #006C66;
+  --oe-navy: #272D63;
+  --oe-link: #0170B9;
+  --oe-ink: #1F2933;
+  --oe-text: #3A3A3A;
+  --oe-text-muted: #52606D;
+  --oe-text-faint: #7B8794;
+  --oe-border: #E4E7EB;
+  --oe-surface: #FFFFFF;
+  --oe-surface-alt: #F5F7FA;
+  --oe-series-a: #2A78D6;
+  --oe-series-b: #EB6834;
+  --oe-series-c: #1BAF7A;
+  --oe-series-d: #EDA100;
+  --oe-good: #0CA30C;
+  --oe-warning: #FAB219;
+  --oe-critical: #D03B3B;
+  --oe-map-1: #719F87;
+  --oe-map-2: #C94856;
+  --oe-map-3: #275C8D;
+  --oe-map-4: #755323;
+  --oe-map-5: #C68724;
+  --oe-map-6: #A96FC1;
+  --oe-font-heading: 'Nunito', system-ui, sans-serif;
+  --oe-font-body: 'Roboto', system-ui, sans-serif;
+  --oe-font-button: 'Roboto Slab', serif;
+  --oe-font-office-body: 'Calibri', Arial, sans-serif;
+  --oe-font-mono: 'Consolas', ui-monospace, monospace;
+  --oe-text-size: 1.0625rem;
+  --oe-text-small: 0.9375rem;
+  --oe-h1: 2rem;
+  --oe-h2: 1.35rem;
+  --oe-h3: 1.1rem;
+  --oe-line: 1.6;
+  --oe-radius-card: 12px;
+  --oe-radius-small: 6px;
+  --oe-reading-width: 52rem;
+}
+
+html { font-family: var(--oe-font-body); color: var(--oe-ink); }
+body { margin: 0; font-size: 10.5pt; line-height: 1.45; }
+h1, h2, h3, h4 { font-family: var(--oe-font-heading); line-height: 1.25; break-after: avoid; }
+h1 { font-size: 24pt; color: var(--oe-navy); margin: 0 0 6pt; }
+h2 { font-size: 16pt; color: var(--oe-teal); margin: 16pt 0 5pt; padding-top: 4pt; border-top: 0.75pt solid var(--oe-border); }
+h3 { font-size: 12.5pt; color: var(--oe-ink); margin: 11pt 0 3pt; }
+a { color: var(--oe-teal); text-decoration: none; }
+table { border-collapse: collapse; width: 100%; font-size: 9pt; margin: 8pt 0; break-inside: auto; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th, td { border-bottom: 0.5pt solid var(--oe-border); padding: 3pt 5pt; text-align: left; vertical-align: top; }
+th { font-family: var(--oe-font-heading); color: var(--oe-text-muted); border-bottom: 1pt solid var(--oe-border); }
+figure { margin: 10pt 0; break-inside: avoid; }
+figure img, img { max-width: 100%; height: auto; }
+figcaption { font-size: 9pt; color: var(--oe-text-muted); margin-top: 3pt; }
+blockquote, .fg-note { background: var(--oe-surface-alt); border-left: 3pt solid var(--oe-teal); margin: 8pt 0; padding: 5pt 9pt; }
+p, li { orphans: 3; widows: 3; }
+@page {
+  size: A4;
+  margin: 20mm 18mm 20mm 22mm;
+}
+@page :right { margin: 20mm 18mm 20mm 22mm; }
+@page :left  { margin: 20mm 22mm 20mm 18mm; }
